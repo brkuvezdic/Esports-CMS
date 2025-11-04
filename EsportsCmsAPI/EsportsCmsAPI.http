@@ -1,0 +1,6 @@
+@EsportsCmsAPI_HostAddress = http://localhost:5296
+
+GET {{EsportsCmsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
