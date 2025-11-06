@@ -1,0 +1,12 @@
+.about-section h2 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.about-section p {
+  margin-bottom: 1rem;
+}
+
+.about-section img {
+  max-width: 300px;
+}

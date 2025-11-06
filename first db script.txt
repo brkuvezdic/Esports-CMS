@@ -1,0 +1,78 @@
+
+
+CREATE TABLE UserProfile (
+    UserId INT IDENTITY(1,1),
+	DisplayName NVARCHAR(100) NOT NULL CONSTRAINT DF_UserProfile_DisplayName DEFAULT 'Guest',
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    Email NVARCHAR(100) NOT NULL,
+	AdObjId NVARCHAR(128) NOT NULL,
+    ProfileImageUrl NVARCHAR(500) NULL,
+    CreatedOn DATETIME2 NOT NULL CONSTRAINT DF_UserProfile_CreatedOn DEFAULT GETUTCDATE(),
+    CONSTRAINT PK_UserProfile_UserId PRIMARY KEY (UserId)
+);
+
+CREATE TABLE Roles (
+    RoleId INT IDENTITY(1,1),    
+    RoleName NVARCHAR(50) NOT NULL,  
+    CONSTRAINT PK_Roles_RoleId PRIMARY KEY (RoleId)    
+);
+
+
+-- UserRole Table
+CREATE TABLE UserRole (
+    UserRoleId INT IDENTITY(1,1),
+    RoleId INT NOT NULL,
+    UserId INT NOT NULL,    
+    CONSTRAINT PK_UserRole_UserRoleId PRIMARY KEY (UserRoleId),
+    CONSTRAINT FK_UserRole_UserProfile FOREIGN KEY (UserId) REFERENCES UserProfile(UserId),
+    CONSTRAINT FK_UserRole_Roles FOREIGN KEY (RoleId) REFERENCES Roles(RoleId),
+);
+
+CREATE TABLE Colleges (
+    CollegeId INT IDENTITY(1,1),
+    Title NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(MAX) NULL,
+    CreatedBy INT NOT NULL,
+    CreatedOn DATETIME2 NOT NULL CONSTRAINT DF_Courses_CreatedOn DEFAULT GETDATE(),
+    CONSTRAINT PK_Colleges_CollegeId PRIMARY KEY (CollegeId),
+);
+
+CREATE TABLE Teams (
+    TeamId INT IDENTITY(1,1),
+    CollegeId INT NOT NULL,
+    Title NVARCHAR(100) NOT NULL,
+);
+
+CREATE TABLE Sponsors (
+    SponsorId INT IDENTITY(1,1),
+    Title NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(MAX) NULL,
+    SponsorImageUrl NVARCHAR(500) NULL,
+    SponsorTier NVARCHAR(50) NOT NULL,  
+    );
+
+
+CREATE TABLE UserActivityLog (
+    LogId INT IDENTITY(1,1),
+    UserId INT,
+    ActivityType NVARCHAR(50) NOT NULL,
+    ActivityDescription NVARCHAR(MAX),
+    LogDate DATETIME NOT NULL,
+    CONSTRAINT PK_UserActivityLog_LogId PRIMARY KEY (LogId),
+    CONSTRAINT FK_UserActivityLog_UserProfile FOREIGN KEY (UserId) REFERENCES UserProfile(UserId)
+);
+
+
+
+USE [ESPORTS_CMS]
+GO
+
+INSERT INTO [dbo].[Roles]
+           ([RoleName])
+     VALUES
+           ('Admin')
+		   ,('Representative')
+		   ,('Student')
+		   ,('ReadOnly')
+GO
