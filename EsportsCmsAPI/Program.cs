@@ -1,7 +1,12 @@
 
+using EsportsCmsApplication;
+using EsportsCmsApplication.Interfaces.Colleges;
+using EsportsCmsApplication.Services;
 using EsportsCmsDomain.Entities;
+using EsportsCmsInfrastructure;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using EsportsCmsDomain.EntitiesNew;
 
 namespace EsportsCmsAPI
 {
@@ -11,22 +16,38 @@ namespace EsportsCmsAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddDbContext<EsportsCmsContext>(options =>
+            builder.Services.AddDbContext<EsportsCmsDomain.EntitiesNew.EsportsCmsContext>(options =>
             {
                 options.UseSqlServer(
-                builder.Configuration.GetConnectionString("DbContext"),
-                providerOptions => providerOptions.EnableRetryOnFailure()
-                ).EnableSensitiveDataLogging().EnableDetailedErrors();
+                    builder.Configuration.GetConnectionString("DbContext"),
+                    sqlOptions => sqlOptions.EnableRetryOnFailure()
+                ).EnableSensitiveDataLogging()
+                 .EnableDetailedErrors();
             });
+
 
             // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+            builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
+            builder.Services.AddScoped<ICollegeRepository, CollegeRepository>();
+            builder.Services.AddScoped<ICollegeService, CollegeService>();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("default", policy =>
+                {
+                    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+
+                });
+
+            });
 
             var app = builder.Build();
 
+
+            app.UseCors("default");
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
