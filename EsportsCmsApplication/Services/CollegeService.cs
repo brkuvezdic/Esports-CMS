@@ -33,11 +33,9 @@ namespace EsportsCmsApplication.Services
 
         public async Task<CollegeDto> CreateCollegeAsync(CreateCollegeDto createDto)
         {
-            if (await _collegeRepository.CollegeExistsAsync(createDto.Title))
-                throw new InvalidOperationException($"College with title '{createDto.Title}' already exists.");
-
+           
             var college = _mapper.Map<College>(createDto);
-            college.CreatedBy = 1; // or get from context
+            college.CreatedBy = 1; // temp hardcoded value for now!
             college.CreatedOn = DateTime.UtcNow;
 
             var createdCollege = await _collegeRepository.AddCollegeAsync(college);

@@ -7,6 +7,9 @@ using EsportsCmsInfrastructure;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using EsportsCmsDomain.EntitiesNew;
+using EsportsCmsAPI.Filters;
+using EsportsCmsApplication.DTOValidations;
+using FluentValidation;
 
 namespace EsportsCmsAPI
 {
@@ -28,10 +31,19 @@ namespace EsportsCmsAPI
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers(options =>
+            {
+                options.Filters.Add<ValidationFilter>();
+
+            }).ConfigureApiBehaviorOptions(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+
+            });
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateCollegeValidator>();
             builder.Services.AddScoped<ICollegeRepository, CollegeRepository>();
             builder.Services.AddScoped<ICollegeService, CollegeService>();
             builder.Services.AddCors(options =>

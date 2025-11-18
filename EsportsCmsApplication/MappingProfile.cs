@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using EsportsCmsApplication.DTOs;
 using EsportsCmsDomain.EntitiesNew;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EsportsCmsApplication
 {
@@ -14,6 +9,9 @@ namespace EsportsCmsApplication
         public MappingProfile()
         {
             CreateMap<College, CollegeDto>().ReverseMap();
+            CreateMap<CreateCollegeDto, College>();
+            CreateMap<UpdateCollegeDto, College>().ForAllMembers(opts => opts.Condition((src, dest, srcMember)=> srcMember !=null));
+
         }
     }
 }
