@@ -1,15 +1,18 @@
 
+using EsportsCmsAPI.Filters;
 using EsportsCmsApplication;
+using EsportsCmsApplication.DTOValidations;
 using EsportsCmsApplication.Interfaces.Colleges;
 using EsportsCmsApplication.Services;
 using EsportsCmsDomain.Entities;
-using EsportsCmsInfrastructure;
-using Microsoft.EntityFrameworkCore;
-using Scalar.AspNetCore;
 using EsportsCmsDomain.EntitiesNew;
-using EsportsCmsAPI.Filters;
-using EsportsCmsApplication.DTOValidations;
+using EsportsCmsInfrastructure;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Scalar.AspNetCore;
+using System.Text;
 
 namespace EsportsCmsAPI
 {
@@ -30,7 +33,8 @@ namespace EsportsCmsAPI
 
 
             // Add services to the container.
-
+            DotNetEnv.Env.Load();
+            var token = Environment.GetEnvironmentVariable("TOKEN");
             builder.Services.AddControllers(options =>
             {
                 options.Filters.Add<ValidationFilter>();
@@ -56,6 +60,24 @@ namespace EsportsCmsAPI
 
             });
 
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = builder.Configuration["AppSettings:Issuer"],
+                    ValidAudience = builder.Configuration["AppSettings:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(token)
+            ),
+                    ClockSkew = TimeSpan.Zero
+                };
+
+            });
+            builder.Services.AddScoped<IAuthService, AuthService>();
             var app = builder.Build();
 
 
