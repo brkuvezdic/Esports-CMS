@@ -1,0 +1,9 @@
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+}
+
+a {
+  cursor: pointer;
+}

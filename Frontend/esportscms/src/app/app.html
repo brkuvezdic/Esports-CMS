@@ -1,10 +1,14 @@
 <body class="d-flex flex-column min-vh-100">
+
   <app-navbar></app-navbar>
-  <app-sponsors></app-sponsors>
-  <app-colleges></app-colleges>
+
+  <app-sponsors *ngIf="!hideExtraSections"></app-sponsors>
+  <app-colleges *ngIf="!hideExtraSections"></app-colleges>
 
   <main class="flex-fill">
     <router-outlet></router-outlet>
   </main>
+
   <app-footer class="mt-auto"></app-footer>
+
 </body>
