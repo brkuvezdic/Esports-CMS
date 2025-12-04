@@ -17,6 +17,6 @@ public partial class College
     public string? Description { get; set; }
 
     public int CreatedBy { get; set; }
-
+    public int Sequence { get; set; } = 9999;
     public DateTime CreatedOn { get; set; }
 }
