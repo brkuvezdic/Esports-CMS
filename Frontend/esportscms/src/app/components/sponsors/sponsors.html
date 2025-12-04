@@ -1,4 +1,4 @@
-<div class="marquee">
+<div *ngIf="isHidden" class="marquee">
   <div class="marquee__group">
     <span class="sponsor" *ngFor="let sponsor of sponsors">{{ sponsor.name }}</span>
   </div>

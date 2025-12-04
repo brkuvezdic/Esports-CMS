@@ -4,12 +4,14 @@ import { NavbarComponent } from './pages/navbar/navbar';
 import { Footer } from './components/footer/footer';
 import { SponsorsComponent } from './components/sponsors/sponsors';
 import { CollegesComponent } from './components/colleges/colleges';
-import { CommonModule, NgClass } from '@angular/common';
+import { LeftSidebar } from './components/left-sidebar/left-sidebar';
+
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, NavbarComponent, CollegesComponent, Footer, SponsorsComponent],
+  imports: [RouterOutlet, CommonModule, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

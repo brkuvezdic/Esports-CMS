@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sponsors',
@@ -9,6 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./sponsors.css']
 })
 export class SponsorsComponent {
+
+    constructor(private router: Router) {}
+
+  get isHidden(): boolean {
+    return this.router.url === '/';
+  }
   sponsors = [
     { name: 'Red Bull' },
     { name: 'Intel' },

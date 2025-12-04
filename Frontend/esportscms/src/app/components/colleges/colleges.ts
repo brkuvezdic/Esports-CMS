@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { College } from '../../models/college';
 import { CollegesService } from '../../services/colleges';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-colleges',
@@ -12,7 +13,15 @@ import { CommonModule } from '@angular/common';
 export class CollegesComponent implements OnInit {
   colleges: College[] = [];
 
-  constructor(private collegeService: CollegesService) {}
+  constructor(private collegeService: CollegesService
+    ,private router: Router
+  ) {}
+
+
+  get isHidden(): boolean {
+    return this.router.url === '/';
+  }
+
 
   ngOnInit(): void {
     this.loadColleges();
