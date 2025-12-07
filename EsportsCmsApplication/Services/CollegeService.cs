@@ -73,5 +73,18 @@ namespace EsportsCmsApplication.Services
             return true;
         }
 
+        public async Task<List<CollegeDto>> ReorderCollegesAsync(List<ReorderCollegeDto> reordered)
+        {
+            if (reordered == null || !reordered.Any())
+                return new List<CollegeDto>();
+
+            await _collegeRepository.ReorderCollegesAsync(reordered);
+
+            var colleges = await _collegeRepository.GetAllCollegesAsync();
+            colleges = colleges.OrderBy(c => c.Sequence).ToList();
+
+            return _mapper.Map<List<CollegeDto>>(colleges);
+        }
+
     }
 }

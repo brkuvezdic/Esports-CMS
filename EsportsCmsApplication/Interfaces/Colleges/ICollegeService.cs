@@ -9,6 +9,7 @@ namespace EsportsCmsApplication.Interfaces.Colleges
         Task<List<CollegeDto>> GetAllCollegesAsync();
 
         Task<CollegeDto?> GetCollegeByIdAsync(int id);
+        Task<List<CollegeDto>> ReorderCollegesAsync(List<ReorderCollegeDto> reordered);
 
         Task<CollegeDto> CreateCollegeAsync(CreateCollegeDto createDto);
 

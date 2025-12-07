@@ -1,6 +1,7 @@
 ﻿using EsportsCmsApplication.DTOs;
 using EsportsCmsApplication.DTOValidations;
 using EsportsCmsApplication.Interfaces.Colleges;
+using EsportsCmsInfrastructure;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -99,5 +100,19 @@ namespace EsportsCmsAPI.Controllers
 
             return NoContent();
         }
+
+
+
+
+        [HttpPost("reorder")]
+        public async Task<IActionResult> ReorderColleges([FromBody] List<ReorderCollegeDto> reordered)
+        {
+            if (reordered == null || !reordered.Any())
+                return BadRequest("Invalid reorder list");
+
+            await _service.ReorderCollegesAsync(reordered);
+            return Ok();
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using EsportsCmsDomain.EntitiesNew;
+﻿using EsportsCmsApplication.DTOs;
+using EsportsCmsDomain.EntitiesNew;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace EsportsCmsApplication.Interfaces.Colleges
         Task<List<College>> GetAllCollegesAsync();
 
         Task<College?> GetCollegeByIdAsync(int id);
+        Task ReorderCollegesAsync(List<ReorderCollegeDto> reordered);
 
         Task<bool> CollegeExistsAsync(string Title);
         Task<College> AddCollegeAsync(College college);

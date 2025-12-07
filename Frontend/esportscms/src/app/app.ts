@@ -6,6 +6,8 @@ import { SponsorsComponent } from './components/sponsors/sponsors';
 import { CollegesComponent } from './components/colleges/colleges';
 import { LeftSidebar } from './components/shared/left-sidebar/left-sidebar';
 import { CollegesCms } from './components/features/colleges-cms/colleges-cms';
+import { CollegesReorder } from './components/features/colleges-cms/colleges-reorder/colleges-reorder';
+
 
 
 import { CommonModule } from '@angular/common';
@@ -13,7 +15,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar],
+  imports: [RouterOutlet, CommonModule, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

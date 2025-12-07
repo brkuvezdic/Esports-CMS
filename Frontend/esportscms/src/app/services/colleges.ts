@@ -18,5 +18,8 @@ export class CollegesService {
   addCollege(college: College): Observable<College> {
     return this.http.post<College>(`${this.baseUrl}api/Colleges`, college);
   }
+  reorderColleges(data: any): Observable<any> {
+  return this.http.post(`${this.baseUrl}api/Colleges/reorder`, data);
+}
 }
 

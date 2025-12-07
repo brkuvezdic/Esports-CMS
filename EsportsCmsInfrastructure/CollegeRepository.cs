@@ -1,4 +1,5 @@
-﻿using EsportsCmsApplication.Interfaces.Colleges;
+﻿using EsportsCmsApplication.DTOs;
+using EsportsCmsApplication.Interfaces.Colleges;
 using EsportsCmsDomain.EntitiesNew;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,7 +21,7 @@ namespace EsportsCmsInfrastructure
 
         public Task<List<College>> GetAllCollegesAsync()
         {
-            return _dbContext.Colleges.ToListAsync();
+            return _dbContext.Colleges.OrderBy(item => item.Sequence).ToListAsync();
         }
 
         public async Task<College?> GetCollegeByIdAsync(int id)
@@ -103,6 +104,21 @@ namespace EsportsCmsInfrastructure
         {
             throw new NotImplementedException();
         }
+
+        public async Task ReorderCollegesAsync(List<ReorderCollegeDto> reordered)
+        {
+            foreach (var item in reordered)
+            {
+                var college = await _dbContext.Colleges.FindAsync(item.CollegeId);
+                if (college != null)
+                {
+                    college.Sequence = item.Sequence;
+                }
+            }
+
+            await _dbContext.SaveChangesAsync();
+        }
+
 
     }
 }

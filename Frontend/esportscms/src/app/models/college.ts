@@ -3,6 +3,7 @@ export interface College {
     title: string;
     description: string;
     logo: string;
+    sequence: number;
 
 
 }
