@@ -13,14 +13,14 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesCms],
+  imports: [RouterOutlet, CommonModule, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 export class App {
   protected readonly title = signal('esportscms');
 
-  hiddenRoutes = ['/Login'];
+  hiddenRoutes = ['/Login', '/Cms/Colleges'];
 
   constructor(public router: Router) {}
 

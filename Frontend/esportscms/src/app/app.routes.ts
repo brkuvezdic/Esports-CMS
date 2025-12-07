@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AdminGuard } from './/services/admin.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,5 +15,11 @@ export const routes: Routes = [
   },
   {
     path: 'Cms/Colleges', loadComponent: () => import('./components/features/colleges-cms/colleges-cms').then((m) => m.CollegesCms),
+        canActivate: [AdminGuard]
+
   },
+    {
+    path: 'forbidden',
+    loadComponent: () => import('./pages/about/about').then(m => m.AboutComponent)
+  }
 ];
