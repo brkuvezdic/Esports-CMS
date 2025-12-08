@@ -3,6 +3,7 @@ using EsportsCmsAPI.Filters;
 using EsportsCmsApplication;
 using EsportsCmsApplication.DTOValidations;
 using EsportsCmsApplication.Interfaces.Colleges;
+using EsportsCmsApplication.Interfaces.Sponsors;
 using EsportsCmsApplication.Services;
 using EsportsCmsDomain.Entities;
 using EsportsCmsDomain.EntitiesNew;
@@ -50,6 +51,8 @@ namespace EsportsCmsAPI
             builder.Services.AddValidatorsFromAssemblyContaining<CreateCollegeValidator>();
             builder.Services.AddScoped<ICollegeRepository, CollegeRepository>();
             builder.Services.AddScoped<ICollegeService, CollegeService>();
+            builder.Services.AddScoped<ISponsorRepository, SponsorRepository>();
+            builder.Services.AddScoped<ISponsorService, SponsorService>();
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("default", policy =>

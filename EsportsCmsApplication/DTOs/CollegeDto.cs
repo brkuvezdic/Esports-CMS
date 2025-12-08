@@ -18,7 +18,6 @@ namespace EsportsCmsApplication.DTOs
         public string Title { get; set; } = string.Empty;
 
         public string? Description { get; set; }
-        public string? LogoPath { get; set; }
     }
 
     // DTO for updating an entire college

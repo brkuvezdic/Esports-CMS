@@ -17,8 +17,5 @@ public partial class Sponsor
     public string? Description { get; set; }
 
     [StringLength(500)]
-    public string? SponsorImageUrl { get; set; }
-
-    [StringLength(50)]
     public string SponsorTier { get; set; } = null!;
 }
