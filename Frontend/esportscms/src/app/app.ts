@@ -10,12 +10,12 @@ import { CollegesReorder } from './components/features/colleges-cms/colleges-reo
 
 
 
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder],
+  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

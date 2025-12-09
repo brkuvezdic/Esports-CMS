@@ -1,29 +1,31 @@
-<div *ngIf="!isHidden" class="container mt-4">
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h3 class="mb-4">Add New College</h3>
-
-      <form [formGroup]="addCollegeForm" (ngSubmit)="submit()">
-
-        <div class="mb-3">
-          <label class="form-label">Title</label>
-          <input type="text" formControlName="title" class="form-control" placeholder="Enter college title"/>
-          <div class="text-danger mt-1" *ngIf="addCollegeForm.get('title')?.invalid && addCollegeForm.get('title')?.touched">
-            Title is required.
+@if (!isHidden) {
+  <div class="container mt-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="mb-4">Add New College</h3>
+        <form [formGroup]="addCollegeForm" (ngSubmit)="submit()">
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" formControlName="title" class="form-control" placeholder="Enter college title"/>
+            @if (addCollegeForm.get('title')?.invalid && addCollegeForm.get('title')?.touched) {
+              <div class="text-danger mt-1">
+                Title is required.
+              </div>
+            }
           </div>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Description</label>
-          <textarea formControlName="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary" [disabled]="addCollegeForm.invalid">Add College</button>
-
-      </form>
-
-      <div class="alert alert-success mt-3" *ngIf="successMessage">{{ successMessage }}</div>
-      <div class="alert alert-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea formControlName="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="addCollegeForm.invalid">Add College</button>
+        </form>
+        @if (successMessage) {
+          <div class="alert alert-success mt-3">{{ successMessage }}</div>
+        }
+        @if (errorMessage) {
+          <div class="alert alert-danger mt-3">{{ errorMessage }}</div>
+        }
+      </div>
     </div>
   </div>
-</div>
+}

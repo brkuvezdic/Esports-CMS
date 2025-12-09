@@ -1,19 +1,22 @@
-<div *ngIf="!isHidden" cdkDropList (cdkDropListDropped)="drop($event)" class="d-flex flex-column align-items-center gap-2">
-  <div
-    *ngFor="let college of colleges"
-    cdkDrag
-    class="bg-white rounded shadow-sm p-3 d-flex align-items-center gap-3 w-100"
-    style="max-width: 500px; cursor: grab; user-select: none;"
-  >
-    <span class="drag-handle text-muted">
-      <i class="bi bi-grip-vertical"></i>
-    </span>
-
-    <div class="flex-grow-1">
-      <div class="fw-semibold">{{ college.title }}</div>
-      <div class="text-muted small" *ngIf="college.description">{{ college.description }}</div>
-    </div>
-
-    <span class="badge bg-primary rounded-pill">{{ college.sequence }}</span>
+@if (!isHidden) {
+  <div cdkDropList (cdkDropListDropped)="drop($event)" class="d-flex flex-column align-items-center gap-2">
+    @for (college of colleges; track college) {
+      <div
+        cdkDrag
+        class="bg-white rounded shadow-sm p-3 d-flex align-items-center gap-3 w-100"
+        style="max-width: 500px; cursor: grab; user-select: none;"
+        >
+        <span class="drag-handle text-muted">
+          <i class="bi bi-grip-vertical"></i>
+        </span>
+        <div class="flex-grow-1">
+          <div class="fw-semibold">{{ college.title }}</div>
+          @if (college.description) {
+            <div class="text-muted small">{{ college.description }}</div>
+          }
+        </div>
+        <span class="badge bg-primary rounded-pill">{{ college.sequence }}</span>
+      </div>
+    }
   </div>
-</div>
+}

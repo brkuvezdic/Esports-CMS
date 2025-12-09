@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { College } from '../../models/college';
 import { CollegesService } from '../../services/colleges';
-import { CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-colleges',
-  imports: [CommonModule,],
+  imports: [],
   templateUrl: './colleges.html',
   styleUrl: './colleges.css',
 })

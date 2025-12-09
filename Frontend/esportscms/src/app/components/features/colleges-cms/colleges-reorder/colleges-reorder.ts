@@ -3,12 +3,12 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CollegesService } from '../../../../services/colleges';
 import { College } from '../../../../models/college';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { CommonModule } from '@angular/common';
+
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-colleges-reorder',
-  imports: [DragDropModule,CommonModule, RouterModule],
+  imports: [DragDropModule, RouterModule],
   templateUrl: './colleges-reorder.html',
   styleUrl: './colleges-reorder.css',
 })
