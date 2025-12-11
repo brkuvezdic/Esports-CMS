@@ -7,6 +7,7 @@ import { CollegesComponent } from './components/colleges/colleges';
 import { LeftSidebar } from './components/shared/left-sidebar/left-sidebar';
 import { CollegesCms } from './components/features/colleges-cms/colleges-cms';
 import { CollegesReorder } from './components/features/colleges-cms/colleges-reorder/colleges-reorder';
+import { Hero } from './components/features/features/hero/hero';
 
 
 
@@ -15,7 +16,7 @@ import { CollegesReorder } from './components/features/colleges-cms/colleges-reo
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder],
+  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

@@ -1,8 +1,9 @@
 
 @if (isHidden) {
   <div class="container my-5">
-    <h1 class="text-center mb-4 fw-bold">Colleges</h1>
-    <div class="row g-4">
+    <p class="hero-subtitle">
+Top universities from across the nation bringing their best teams to compete for the championship title.
+    </p>    <div class="row g-4">
       @for (college of colleges; track college) {
         <div class="col-md-4">
           <div class="card h-100 shadow-sm college-card">
@@ -14,11 +15,6 @@
               <div class="card-body">
                 <h5 class="card-title text-primary fw-bold">{{ college.title }}</h5>
                 <p class="card-text text-muted">{{ college.description }}</p>
-              </div>
-              <div class="card-footer bg-white border-0">
-                <button class="btn btn-outline-primary w-100">
-                  View Details
-                </button>
               </div>
             </div>
           </div>

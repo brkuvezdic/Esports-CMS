@@ -1,6 +1,9 @@
 @if (!isHidden) {
   <div cdkDropList (cdkDropListDropped)="drop($event)" class="d-flex flex-column align-items-center gap-2">
+            <h3 class="mb-4">Drag & Drop College reorder</h3>
+
     @for (college of colleges; track college) {
+      
       <div
         cdkDrag
         class="bg-white rounded shadow-sm p-3 d-flex align-items-center gap-3 w-100"

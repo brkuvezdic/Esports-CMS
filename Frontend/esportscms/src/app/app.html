@@ -4,11 +4,11 @@
   <app-left-sidebar></app-left-sidebar>
 
   @if (!hideExtraSections) {
+    <app-hero></app-hero>
     <app-sponsors></app-sponsors>
-  }
-  @if (!hideExtraSections) {
     <app-colleges></app-colleges>
   }
+
   <main class="flex-fill">
     <router-outlet></router-outlet>
   </main>
