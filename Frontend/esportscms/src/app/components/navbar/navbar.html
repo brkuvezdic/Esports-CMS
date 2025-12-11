@@ -10,9 +10,10 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/Login" routerLinkActive="active">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Cms" routerLinkActive="active">CMS</a>
-        </li>
+<li class="nav-item" *ngIf="auth.isAdmin()">
+  <a class="nav-link" routerLink="/Cms" routerLinkActive="active">CMS</a>
+</li>
+
       </ul>
     </div>
   </div>

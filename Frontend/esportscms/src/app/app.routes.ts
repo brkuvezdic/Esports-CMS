@@ -12,6 +12,8 @@ export const routes: Routes = [
   },
   {
     path: 'Cms', loadComponent: () => import('./pages/cms/cms').then((m) => m.CMS),
+            canActivate: [AdminGuard]
+
   },
   {
     path: 'Cms/Colleges', loadComponent: () => import('./components/features/colleges-cms/colleges-cms').then((m) => m.CollegesCms),
