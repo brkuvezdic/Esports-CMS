@@ -4,19 +4,15 @@ import { NavbarComponent } from './components/navbar/navbar';
 import { Footer } from './components/footer/footer';
 import { SponsorsComponent } from './components/sponsors/sponsors';
 import { CollegesComponent } from './components/colleges/colleges';
-import { LeftSidebar } from './components/shared/left-sidebar/left-sidebar';
-import { CollegesCms } from './components/features/colleges-cms/colleges-cms';
+import { LeftSidebar } from './components/left-sidebar/left-sidebar';
 import { CollegesReorder } from './components/features/colleges-cms/colleges-reorder/colleges-reorder';
 import { Hero } from './components/features/features/hero/hero';
-
-
-
-
+import { Students } from './components/features/colleges-cms/students/students';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero],
+  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero, Students],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

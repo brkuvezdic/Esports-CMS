@@ -18,7 +18,10 @@ export const routes: Routes = [
   {
     path: 'Cms/Colleges', loadComponent: () => import('./components/features/colleges-cms/colleges-cms').then((m) => m.CollegesCms),
         canActivate: [AdminGuard]
-
+  },
+    {
+    path: 'Cms/Students', loadComponent: () => import('./components/features/colleges-cms/students/students').then((m) => m.Students),
+        canActivate: [AdminGuard]
   },
     {
     path: 'forbidden',
