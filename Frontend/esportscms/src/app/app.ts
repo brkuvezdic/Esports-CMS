@@ -7,11 +7,12 @@ import { CollegesComponent } from './components/colleges/colleges.component';
 import { LeftSidebar } from './components/left-sidebar/left.sidebar.component';
 import { CollegesReorder } from './components/features/cms/colleges-reorder/colleges.reorder.component';
 import { Hero } from './components/features/features/hero/hero.component';
+import { PandascoreComponent } from './components/pandascore/pandascore.component/pandascore.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero],
+  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero, PandascoreComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

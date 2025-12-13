@@ -1,0 +1,52 @@
+@if (isHidden) {
+<div class="container my-4">
+  @if (pandascoreModel) {
+    <h3 class="mb-3">Upcoming Matches</h3>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+      <div class="col" *ngFor="let match of pandascoreModel">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              {{ match.title }}
+              @if (match.status === 'not_started') {
+                <span class="live-indicator"></span>
+              }
+            </h5>
+
+            <p class="card-text mb-1">
+              <strong>Start Time:</strong>
+              @if (match.beginAt) {
+                {{ match.beginAt | date:'medium' }}
+              } @else {
+                TBD
+              }
+            </p>
+
+            <p class="card-text mb-1">
+              <strong>Status:</strong>
+              <span [ngClass]="{
+                'text-success': match.status === 'finished',
+                'text-warning': match.status === 'not_started',
+                'text-danger': match.status === 'canceled'
+              }">
+                {{ match.status | titlecase }}
+              </span>
+            </p>
+
+            @if (match.streamUrl) {
+              <p class="card-text mb-1">
+                <strong>Stream:</strong>
+                <a [href]="match.streamUrl" target="_blank" class="btn btn-sm btn-primary">
+                  Watch
+                </a>
+              </p>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <p class="text-muted">No upcoming matches available.</p>
+  }
+</div>
+}

@@ -12,18 +12,21 @@ export const routes: Routes = [
   },
   {
     path: 'Cms', loadComponent: () => import('./pages/cms/cms').then((m) => m.CMS),
-            canActivate: [AdminGuard]
+    canActivate: [AdminGuard]
 
   },
   {
     path: 'Cms/Colleges', loadComponent: () => import('./components/features/cms/colleges.cms.component').then((m) => m.CollegesCms),
-        canActivate: [AdminGuard]
+    canActivate: [AdminGuard]
   },
-    {
+  {
     path: 'Cms/Students', loadComponent: () => import('./components/features/cms/students/students.component').then((m) => m.StudentsComponent),
-        canActivate: [AdminGuard]
+    canActivate: [AdminGuard]
   },
-    {
+  {
+    path: 'UpcomingMatches', loadComponent: () => import('./components/pandascore/pandascore.component/pandascore.component').then((m) => m.PandascoreComponent),
+  },
+  {
     path: 'forbidden',
     loadComponent: () => import('./pages/about/about').then(m => m.AboutComponent)
   }

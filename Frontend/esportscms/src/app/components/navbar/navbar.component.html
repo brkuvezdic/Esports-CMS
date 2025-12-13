@@ -7,6 +7,11 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/About" routerLinkActive="router-link-active">About</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link live-indicator" routerLink="/UpcomingMatches" routerLinkActive="router-link-active">
+            Upcoming Matches
+          </a>
+        </li>
         @if (!auth.getToken()) {
         <li class="nav-item">
           <a class="nav-link" routerLink="/Login" routerLinkActive="active">Login</a>

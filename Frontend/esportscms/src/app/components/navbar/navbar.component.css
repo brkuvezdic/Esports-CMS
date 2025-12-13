@@ -33,3 +33,46 @@
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+
+/* Flashing "live" effect */
+.live-indicator {
+  position: relative;
+  color: #f87171; /* light red */
+  font-weight: 600;
+  animation: flash 1.5s infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem; /* space between dot and text */
+}
+
+/* Small live circle */
+.live-indicator::before {
+  content: '';
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #ef4444; /* red */
+  border-radius: 50%; /* makes it circular */
+  animation: pulse 1.5s infinite;
+}
+
+/* Optional: text "LIVE" after link text */
+.live-indicator::after {
+  content: 'LIVE';
+  color: #ef4444;
+  font-weight: bold;
+  font-size: 0.85rem;
+  animation: pulse 1.5s infinite;
+}
+
+/* Flash and pulse animations */
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}

@@ -3,11 +3,13 @@ using EsportsCmsAPI.Filters;
 using EsportsCmsApplication;
 using EsportsCmsApplication.DTOValidations;
 using EsportsCmsApplication.Interfaces.Colleges;
+using EsportsCmsApplication.Interfaces.PandaScore;
 using EsportsCmsApplication.Interfaces.Sponsors;
 using EsportsCmsApplication.Services;
 using EsportsCmsDomain.Entities;
 using EsportsCmsDomain.EntitiesNew;
 using EsportsCmsInfrastructure;
+using EsportsCmsInfrastructure.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +47,8 @@ namespace EsportsCmsAPI
                 options.SuppressModelStateInvalidFilter = true;
 
             });
+            builder.Services.AddHttpClient();
+
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
@@ -53,6 +57,8 @@ namespace EsportsCmsAPI
             builder.Services.AddScoped<ICollegeService, CollegeService>();
             builder.Services.AddScoped<ISponsorRepository, SponsorRepository>();
             builder.Services.AddScoped<ISponsorService, SponsorService>();
+            builder.Services.AddScoped<IPandaScoreService, PandaScoreService>();
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("default", policy =>
