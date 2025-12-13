@@ -1,0 +1,19 @@
+* {
+  text-align: center;
+}
+
+.container {
+  max-width: 900px;
+}
+
+table {
+  background: #fff;
+}
+
+th {
+  font-weight: 600;
+}
+
+td {
+  vertical-align: middle;
+}

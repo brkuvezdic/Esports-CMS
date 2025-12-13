@@ -1,4 +1,5 @@
 export interface StudentModel {
-    username: string;
-    Role: string;
+  studentId: number;
+  username: string;
+  role: string;
 }

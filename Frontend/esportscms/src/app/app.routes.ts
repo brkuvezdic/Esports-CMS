@@ -20,7 +20,7 @@ export const routes: Routes = [
         canActivate: [AdminGuard]
   },
     {
-    path: 'Cms/Students', loadComponent: () => import('./components/features/cms/students/students.component').then((m) => m.Students),
+    path: 'Cms/Students', loadComponent: () => import('./components/features/cms/students/students.component').then((m) => m.StudentsComponent),
         canActivate: [AdminGuard]
   },
     {
