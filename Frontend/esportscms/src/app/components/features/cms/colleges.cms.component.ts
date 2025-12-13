@@ -9,8 +9,8 @@ import { College } from '../../../models/college';
   selector: 'app-colleges-cms',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule],
-  templateUrl: './colleges-cms.html',
-  styleUrls: ['./colleges-cms.css'],
+  templateUrl: './colleges.cms.component.html',
+  styleUrls: ['./colleges.cms.component.css'],
 })
 export class CollegesCms {
   addCollegeForm: FormGroup;

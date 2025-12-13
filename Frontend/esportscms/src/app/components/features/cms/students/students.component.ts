@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-students',
   imports: [CommonModule],
-  templateUrl: './students.html',
-  styleUrl: './students.css',
+  templateUrl: './students.component.html',
+  styleUrl: './students.component.css',
 })
 export class Students {
   constructor(private collegeService: CollegesService

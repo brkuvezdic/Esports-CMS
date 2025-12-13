@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CollegesReorder } from './colleges-reorder';
+import { CollegesCms } from './colleges.cms.component';
 
-describe('CollegesReorder', () => {
-  let component: CollegesReorder;
-  let fixture: ComponentFixture<CollegesReorder>;
+describe('CollegesCms', () => {
+  let component: CollegesCms;
+  let fixture: ComponentFixture<CollegesCms>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CollegesReorder]
+      imports: [CollegesCms]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CollegesReorder);
+    fixture = TestBed.createComponent(CollegesCms);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

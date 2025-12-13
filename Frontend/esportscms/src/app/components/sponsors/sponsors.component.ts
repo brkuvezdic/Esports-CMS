@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
   selector: 'app-sponsors',
   standalone: true,
   imports: [],
-  templateUrl: './sponsors.html',
-  styleUrls: ['./sponsors.css']
+  templateUrl: './sponsors.component.html',
+  styleUrls: ['./sponsors.component.css']
 })
 export class SponsorsComponent {
 

@@ -16,11 +16,11 @@ export const routes: Routes = [
 
   },
   {
-    path: 'Cms/Colleges', loadComponent: () => import('./components/features/colleges-cms/colleges-cms').then((m) => m.CollegesCms),
+    path: 'Cms/Colleges', loadComponent: () => import('./components/features/cms/colleges.cms.component').then((m) => m.CollegesCms),
         canActivate: [AdminGuard]
   },
     {
-    path: 'Cms/Students', loadComponent: () => import('./components/features/colleges-cms/students/students').then((m) => m.Students),
+    path: 'Cms/Students', loadComponent: () => import('./components/features/cms/students/students.component').then((m) => m.Students),
         canActivate: [AdminGuard]
   },
     {

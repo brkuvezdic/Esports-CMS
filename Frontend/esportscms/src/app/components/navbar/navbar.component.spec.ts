@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CollegesCms } from './colleges-cms';
+import { NavbarComponent } from './navbar.component';
 
-describe('CollegesCms', () => {
-  let component: CollegesCms;
-  let fixture: ComponentFixture<CollegesCms>;
+describe('Navbar', () => {
+  let component: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CollegesCms]
+      imports: [NavbarComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CollegesCms);
+    fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

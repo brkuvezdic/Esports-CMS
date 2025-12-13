@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-colleges',
   imports: [],
-  templateUrl: './colleges.html',
-  styleUrl: './colleges.css',
+  templateUrl: './colleges.component.html',
+  styleUrl: './colleges.component.css',
 })
 export class CollegesComponent implements OnInit {
   colleges: College[] = [];

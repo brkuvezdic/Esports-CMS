@@ -8,8 +8,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-navbar',
   standalone: true,
   imports: [RouterModule, FormsModule, CommonModule],
-  templateUrl: './navbar.html',
-  styleUrls: ['./navbar.css']
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent { 
   constructor(public auth: AuthService) {}

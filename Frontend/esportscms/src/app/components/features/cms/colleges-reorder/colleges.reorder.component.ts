@@ -9,8 +9,8 @@ import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-colleges-reorder',
   imports: [DragDropModule, RouterModule],
-  templateUrl: './colleges-reorder.html',
-  styleUrl: './colleges-reorder.css',
+  templateUrl: './colleges.reorder.component.html',
+  styleUrl: './colleges.reorder.component.css',
 })
 export class CollegesReorder implements OnInit {
 colleges: College[] = [];

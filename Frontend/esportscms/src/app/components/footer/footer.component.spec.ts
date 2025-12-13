@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeftSidebar } from './left-sidebar';
+import { Footer } from './footer.component';
 
-describe('LeftSidebar', () => {
-  let component: LeftSidebar;
-  let fixture: ComponentFixture<LeftSidebar>;
+describe('Footer', () => {
+  let component: Footer;
+  let fixture: ComponentFixture<Footer>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LeftSidebar]
+      imports: [Footer]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LeftSidebar);
+    fixture = TestBed.createComponent(Footer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

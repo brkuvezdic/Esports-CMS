@@ -5,8 +5,8 @@ import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-left-sidebar',
   imports: [RouterModule],
-  templateUrl: './left-sidebar.html',
-  styleUrl: './left-sidebar.css',
+  templateUrl: './left.sidebar.component.html',
+  styleUrl: './left.sidebar.component.css',
   standalone: true,
 })
 export class LeftSidebar {
