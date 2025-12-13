@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { College } from '../models/college';  // Keep this
+import { CollegeModel } from '../models/college';  // Keep this
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +11,12 @@ export class CollegesService {
 
   constructor(private http: HttpClient) {}
 
-  getColleges(): Observable<College[]> {
-    return this.http.get<College[]>(`${this.baseUrl}api/Colleges`);
+  getColleges(): Observable<CollegeModel[]> {
+    return this.http.get<CollegeModel[]>(`${this.baseUrl}api/Colleges`);
   }
 
-  addCollege(college: College): Observable<College> {
-    return this.http.post<College>(`${this.baseUrl}api/Colleges`, college);
+  addCollege(college: CollegeModel): Observable<CollegeModel> {
+    return this.http.post<CollegeModel>(`${this.baseUrl}api/Colleges`, college);
   }
   reorderColleges(data: any): Observable<any> {
   return this.http.post(`${this.baseUrl}api/Colleges/reorder`, data);

@@ -1,4 +1,4 @@
-export interface College {
+export interface CollegeModel {
     collegeId: number;
     title: string;
     description: string;

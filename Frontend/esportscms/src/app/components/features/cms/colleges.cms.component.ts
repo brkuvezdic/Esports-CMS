@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CollegesService } from '../../../services/colleges';
-import { College } from '../../../models/college';
+import { CollegeModel } from '../../../models/college';
 
 @Component({
   selector: 'app-colleges-cms',
@@ -35,7 +35,7 @@ export class CollegesCms {
   submit() {
     if (this.addCollegeForm.invalid) return;
 
-    const college: College = this.addCollegeForm.value;
+    const college: CollegeModel = this.addCollegeForm.value;
 
     this.collegesService.addCollege(college).subscribe({
       next: () => {

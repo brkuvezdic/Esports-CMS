@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CollegesService } from '../../../../services/colleges';
-import { College } from '../../../../models/college';
+import { CollegeModel } from '../../../../models/college';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { Router, RouterModule } from '@angular/router';
@@ -13,7 +13,7 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './colleges.reorder.component.css',
 })
 export class CollegesReorder implements OnInit {
-colleges: College[] = [];
+colleges: CollegeModel[] = [];
   get isHidden(): boolean {
     return this.router.url !== '/Cms/Colleges';
   }
@@ -31,7 +31,7 @@ colleges: College[] = [];
     });
   }
 
-  drop(event: CdkDragDrop<College[]>) {
+  drop(event: CdkDragDrop<CollegeModel[]>) {
     moveItemInArray(this.colleges, event.previousIndex, event.currentIndex);
 
     const reorderPayload = this.colleges.map((c, index) => ({

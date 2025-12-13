@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { College } from '../../models/college';
+import { CollegeModel } from '../../models/college';
 import { CollegesService } from '../../services/colleges';
 
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './colleges.component.css',
 })
 export class CollegesComponent implements OnInit {
-  colleges: College[] = [];
+  colleges: CollegeModel[] = [];
 
   constructor(private collegeService: CollegesService
     ,private router: Router
