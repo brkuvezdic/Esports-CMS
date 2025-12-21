@@ -18,9 +18,9 @@
         </thead>
 
         <tbody>
-          @for (student of students; track student.studentId) {
+          @for (student of students; track student.id) {
             <tr>
-              <td>{{ student.studentId }}</td>
+              <td>{{ student.id }}</td>
               <td>{{ student.username }}</td>
               <td>{{ student.role }}</td>
             </tr>
