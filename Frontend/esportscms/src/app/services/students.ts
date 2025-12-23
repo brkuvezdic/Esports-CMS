@@ -14,5 +14,7 @@ export class StudentsService {
   getStudents(): Observable<StudentModel[]> {
     return this.http.get<StudentModel[]>(`${this.baseUrl}api/Users`);
   }
-
+  updateStudentRoles(changes: { userId: number; roleId: number }[]): Observable<any> {
+  return this.http.post(`${this.baseUrl}api/Users/UpdateRole`, changes);
+}
 }

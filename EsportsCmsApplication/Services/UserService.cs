@@ -19,7 +19,11 @@ namespace EsportsCmsApplication.Services
         public async Task<List<UserDto>> GetAllStudentsAsync()
         {
             var users = await _userRepository.GetAllStudentsAsync();
-            return _mapper.Map<List<UserDto>>(users);
+            var orderedUsers = users
+                .OrderByDescending(x => x.Role)
+                .ToList();
+
+            return _mapper.Map<List<UserDto>>(orderedUsers);
         }
     }
 }

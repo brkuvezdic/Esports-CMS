@@ -4,6 +4,7 @@ using EsportsCmsApplication;
 using EsportsCmsApplication.DTOValidations;
 using EsportsCmsApplication.Interfaces.Colleges;
 using EsportsCmsApplication.Interfaces.PandaScore;
+using EsportsCmsApplication.Interfaces.Roles;
 using EsportsCmsApplication.Interfaces.Sponsors;
 using EsportsCmsApplication.Interfaces.Users;
 using EsportsCmsApplication.Services;
@@ -61,6 +62,8 @@ namespace EsportsCmsAPI
             builder.Services.AddScoped<IPandaScoreService, PandaScoreService>();
             builder.Services.AddScoped<IUsersRepository, UserRepository>();
             builder.Services.AddScoped<IUsersService, UserService>();
+            builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("default", policy =>
