@@ -16,8 +16,5 @@ export class RoleService {
     return this.http.get<RoleModel[]>(`${this.baseUrl}api/Roles`);
   }
 
-  updateStudentRoles(changes: { userId: number; roleId: number }[]): Observable<any> {
-  return this.http.post(`${this.baseUrl}api/Students/update-roles`, changes);
-}
 
 }
