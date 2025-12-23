@@ -12,7 +12,7 @@ import { PandascoreComponent } from './components/pandascore/pandascore.componen
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero, PandascoreComponent],
+  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

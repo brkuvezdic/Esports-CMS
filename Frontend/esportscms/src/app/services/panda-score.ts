@@ -7,7 +7,7 @@ import { PandaScoreModel } from '../models/pandaScore';
   providedIn: 'root',
 })
 export class PandaScoreService {
-  private baseUrl = 'https://localhost:7147/api/pandascore'; // <-- match controller route
+  private baseUrl = 'https://localhost:7147/api/pandascore';
 
   constructor(private http: HttpClient) {}
 
