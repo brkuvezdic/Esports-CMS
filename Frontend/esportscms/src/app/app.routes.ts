@@ -26,6 +26,9 @@ export const routes: Routes = [
   {
     path: 'UpcomingMatches', loadComponent: () => import('./components/pandascore/pandascore.component/pandascore.component').then((m) => m.PandascoreComponent),
   },
+    {
+    path: 'Schedule', loadComponent: () => import('./pages/schedule/schedule').then((m) => m.Schedule),
+  },
   {
     path: 'forbidden',
     loadComponent: () => import('./pages/about/about').then(m => m.AboutComponent)
