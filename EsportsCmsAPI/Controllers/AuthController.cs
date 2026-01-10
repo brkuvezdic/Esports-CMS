@@ -14,7 +14,7 @@ namespace EsportsCmsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController(IAuthService authService, IConfiguration configuration) : ControllerBase
+    public class AuthController(IAuthService authService) : ControllerBase
     {
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(UserDto request)

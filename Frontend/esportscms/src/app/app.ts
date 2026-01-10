@@ -7,13 +7,15 @@ import { CollegesComponent } from './components/colleges/colleges.component';
 import { LeftSidebar } from './components/left-sidebar/left.sidebar.component';
 import { CollegesReorder } from './components/features/cms/colleges-reorder/colleges.reorder.component';
 import { Hero } from './components/features/features/hero/hero.component';
-import { PandascoreComponent } from './components/pandascore/pandascore.component/pandascore.component';
 import { Schedule } from './pages/schedule/schedule';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CalendarComponent } from './components/features/calendar.component/calendar.component';
+import { CalendarFormComponent } from './components/features/calendar.form.component/calendar.form.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero, Schedule],
+  imports: [ReactiveFormsModule,RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero, CalendarComponent, CalendarFormComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

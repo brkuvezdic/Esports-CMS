@@ -8,12 +8,25 @@ namespace EsportsCmsApplication
     {
         public MappingProfile()
         {
+
             CreateMap<College, CollegeDto>().ReverseMap();
+            CreateMap<CreateCollegeDto, College>();
+            CreateMap<UpdateCollegeDto, College>()
+                .ForAllMembers(opts =>
+                    opts.Condition((src, dest, srcMember) => srcMember != null));
+
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<Role, RoleDto>().ReverseMap();
-            CreateMap<CreateCollegeDto, College>();
-            CreateMap<UpdateCollegeDto, College>().ForAllMembers(opts => opts.Condition((src, dest, srcMember)=> srcMember !=null));
 
+
+
+            CreateMap<CalendarEvent, CalendarEventDto>();
+
+            CreateMap<CreateCalendarEventDto, CalendarEvent>();
+
+            CreateMap<UpdateCalendarEventDto, CalendarEvent>()
+                .ForAllMembers(opts =>
+                    opts.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }
