@@ -41,6 +41,7 @@ namespace EsportsCmsInfrastructure.Services
             return rawMatches.Select(m => new PandaScoreMatchDto
             {
                 Id = m.Id,
+                Videogame = m.Videogame.Name,
                 Name = m.Name,
                 BeginAt = m.Begin_At,
                 Status = m.Status,

@@ -10,12 +10,11 @@ import { Hero } from './components/features/features/hero/hero.component';
 import { Schedule } from './pages/schedule/schedule';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarComponent } from './components/features/calendar.component/calendar.component';
-import { CalendarFormComponent } from './components/features/calendar.form.component/calendar.form.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero, CalendarComponent, CalendarFormComponent],
+  imports: [ReactiveFormsModule,RouterOutlet, NavbarComponent, CollegesComponent, Footer, SponsorsComponent, LeftSidebar, CollegesReorder, Hero, CalendarComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

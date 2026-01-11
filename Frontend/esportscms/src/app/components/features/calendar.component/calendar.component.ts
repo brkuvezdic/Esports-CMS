@@ -7,10 +7,11 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarService, CalendarEventDto } from '../../../services/calendar.service';
 import { CalendarOptions } from '@fullcalendar/core';
 import { Router } from '@angular/router';
+import { CalendarFormComponent } from '../calendar.form.component/calendar.form.component';
 
 @Component({
   selector: 'app-calendar',
-  imports: [CommonModule, FullCalendarModule],
+  imports: [CommonModule, FullCalendarModule, CalendarFormComponent],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css'],
 })

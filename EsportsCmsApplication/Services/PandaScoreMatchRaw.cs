@@ -2,15 +2,23 @@
 {
     public class PandaScoreMatchRaw
     {
+        public int Id { get; set; }
 
+        public VideogameRaw Videogame { get; set; }
 
+        public string Name { get; set; }
+
+        public DateTime? Begin_At { get; set; }
+
+        public string Status { get; set; }
+
+        public List<Stream> Streams_List { get; set; }
+
+        public class VideogameRaw
+        {
             public int Id { get; set; }
             public string Name { get; set; }
-            public DateTime? Begin_At { get; set; }
-            public string Status { get; set; }
-
-            public List<Stream> Streams_List { get; set; }
-
+        }
 
         public class Stream
         {
@@ -18,4 +26,5 @@
             public string Raw_Url { get; set; }
         }
     }
+
 }

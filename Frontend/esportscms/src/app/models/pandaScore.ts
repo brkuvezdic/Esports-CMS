@@ -1,5 +1,7 @@
   export interface PandaScoreModel {
-    title: string;
+    id: number;
+    videogame: string;
+    name: string;
     beginAt: Date;
     status: string;
     game: string;
