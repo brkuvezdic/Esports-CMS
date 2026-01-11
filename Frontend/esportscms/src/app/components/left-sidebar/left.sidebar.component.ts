@@ -15,6 +15,6 @@ export class LeftSidebar {
 
 
   get isHidden(): boolean {
-    return this.router.url != '/Cms';
+    return !this.router.url.includes('/Cms');
   }
 }

@@ -15,7 +15,7 @@ export class CalendarFormComponent {
   @Input() eventData?: any;
   form: FormGroup;
   get isHidden(): boolean {
-    return this.router.url !== '/Schedule';
+    return this.router.url !== '/Cms/Schedule';
 
   }
   constructor(private fb: FormBuilder, private calendarService: CalendarService, private router: Router,

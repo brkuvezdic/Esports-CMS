@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class CalendarComponent implements OnInit {
   events: CalendarEventDto[] = [];
   get isHidden(): boolean {
-    return this.router.url !== '/Schedule';
+    return !this.router.url.includes('/Schedule') ;
 
   }
 
