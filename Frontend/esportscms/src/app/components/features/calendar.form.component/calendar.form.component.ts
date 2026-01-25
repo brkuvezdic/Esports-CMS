@@ -14,10 +14,6 @@ import { Router } from '@angular/router';
 export class CalendarFormComponent {
   @Input() eventData?: any;
   form: FormGroup;
-  get isHidden(): boolean {
-    return !this.router.url.includes('/Schedule') ;
-
-  }
   constructor(private fb: FormBuilder, private calendarService: CalendarService, private router: Router,
   ) {
     this.form = this.fb.group({

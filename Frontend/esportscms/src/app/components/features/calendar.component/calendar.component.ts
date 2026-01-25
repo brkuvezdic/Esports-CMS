@@ -22,6 +22,10 @@ export class CalendarComponent implements OnInit {
 
   }
 
+  get showCalendarForm(): boolean {
+  return this.router.url.includes('/Cms/Schedule');
+}
+
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',

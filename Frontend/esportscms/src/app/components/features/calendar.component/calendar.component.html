@@ -2,6 +2,7 @@
 <div class="calendar-wrapper">
 <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
-<app-calendar-form></app-calendar-form>
-
+}
+@if (showCalendarForm) {
+  <app-calendar-form></app-calendar-form>
 }
