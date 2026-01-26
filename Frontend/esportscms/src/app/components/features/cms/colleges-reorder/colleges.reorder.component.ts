@@ -3,23 +3,27 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CollegesService } from '../../../../services/colleges';
 import { CollegeModel } from '../../../../models/college';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
+import { CollegeEditModalComponent } from '../../../../cms/colleges/college-edit-modal/college-edit-modal';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-colleges-reorder',
-  imports: [DragDropModule, RouterModule],
+  imports: [DragDropModule, RouterModule, CollegeEditModalComponent],
   templateUrl: './colleges.reorder.component.html',
   styleUrl: './colleges.reorder.component.css',
 })
 export class CollegesReorder implements OnInit {
-colleges: CollegeModel[] = [];
+  colleges: CollegeModel[] = [];
   get isHidden(): boolean {
     return this.router.url !== '/Cms/Colleges';
   }
-  constructor(private collegeService: CollegesService,    
-     private router: Router,
-) {}
+  constructor(private collegeService: CollegesService,
+    private router: Router,
+  ) { }
+
+  selectedCollege: CollegeModel | null = null;
+  collegeToDelete: CollegeModel | null = null;
+
 
   ngOnInit(): void {
     this.loadColleges();
@@ -40,5 +44,37 @@ colleges: CollegeModel[] = [];
     }));
 
     this.collegeService.reorderColleges(reorderPayload).subscribe();
-}
+  }
+
+  editCollege(college: CollegeModel) {
+    // clone so cancel doesn’t change list
+    this.selectedCollege = { ...college };
+  }
+
+  closeModal() {
+    this.selectedCollege = null;
+  }
+
+  onSaved() {
+    this.loadColleges();
+  }
+
+  confirmDelete(college: CollegeModel) {
+    this.collegeToDelete = college;
+  }
+
+  cancelDelete() {
+    this.collegeToDelete = null;
+  }
+
+  deleteConfirmed() {
+    if (!this.collegeToDelete) return;
+
+    this.collegeService
+      .deleteCollege(this.collegeToDelete.collegeId)
+      .subscribe(() => {
+        this.collegeToDelete = null;
+        this.loadColleges();
+      });
+  }
 }

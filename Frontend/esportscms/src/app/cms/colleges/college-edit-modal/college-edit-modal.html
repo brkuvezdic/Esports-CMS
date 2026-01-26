@@ -1,0 +1,40 @@
+<div class="modal-backdrop fade show"></div>
+
+<div class="modal fade show d-block" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Edit College</h5>
+        <button class="btn-close" (click)="close.emit()"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input class="form-control" [(ngModel)]="college.title" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            rows="3"
+            [(ngModel)]="college.description">
+          </textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Logo URL</label>
+          <input class="form-control" [(ngModel)]="college.logo" />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="close.emit()">Cancel</button>
+        <button class="btn btn-primary" (click)="save()">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>

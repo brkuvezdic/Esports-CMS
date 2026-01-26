@@ -9,7 +9,7 @@ import { CollegeModel } from '../models/college';  // Keep this
 export class CollegesService {
   private baseUrl = 'https://localhost:7147/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getColleges(): Observable<CollegeModel[]> {
     return this.http.get<CollegeModel[]>(`${this.baseUrl}api/Colleges`);
@@ -19,7 +19,18 @@ export class CollegesService {
     return this.http.post<CollegeModel>(`${this.baseUrl}api/Colleges`, college);
   }
   reorderColleges(data: any): Observable<any> {
-  return this.http.post(`${this.baseUrl}api/Colleges/reorder`, data);
+    return this.http.post(`${this.baseUrl}api/Colleges/reorder`, data);
+  }
+  updateCollege(college: any) {
+    return this.http.put(`${this.baseUrl}api/Colleges`, college);
+  }
+
+  deleteCollege(id: number) {
+  return this.http.delete(`${this.baseUrl}api/Colleges/${id}`);
 }
+
+
+
+
 }
 

@@ -1,25 +1,74 @@
 @if (!isHidden) {
-  <div cdkDropList (cdkDropListDropped)="drop($event)" class="d-flex flex-column align-items-center gap-2">
-            <h3 class="mb-4">Drag & Drop College reorder</h3>
+<div cdkDropList (cdkDropListDropped)="drop($event)" class="d-flex flex-column align-items-center gap-2">
+  <h3 class="mb-4">Drag & Drop College reorder</h3>
 
-    @for (college of colleges; track college) {
-      
-      <div
-        cdkDrag
-        class="bg-white rounded shadow-sm p-3 d-flex align-items-center gap-3 w-100"
-        style="max-width: 500px; cursor: grab; user-select: none;"
-        >
-        <span class="drag-handle text-muted">
-          <i class="bi bi-grip-vertical"></i>
-        </span>
-        <div class="flex-grow-1">
-          <div class="fw-semibold">{{ college.title }}</div>
-          @if (college.description) {
-            <div class="text-muted small">{{ college.description }}</div>
-          }
-        </div>
-        <span class="badge bg-primary rounded-pill">{{ college.sequence }}</span>
+  @for (college of colleges; track college) {
+
+  <div cdkDrag class="bg-white rounded shadow-sm p-3 d-flex align-items-center gap-3 w-100"
+    style="max-width: 500px; cursor: grab; user-select: none;">
+
+    <span class="drag-handle text-muted" cdkDragHandle>
+      <i class="bi bi-grip-vertical"></i>
+    </span>
+
+    <div class="flex-grow-1">
+      <div class="fw-semibold">{{ college.title }}</div>
+      @if (college.description) {
+      <div class="text-muted small">
+        {{ college.description }}
       </div>
-    }
+      }
+    </div>
+
+    <button type="button" class="btn btn-sm btn-outline-secondary" (click)="editCollege(college)" cdkDragDisabled
+      title="Edit college">
+      <i class="bi bi-pencil"></i>
+    </button>
+
+
+    <button type="button" class="btn btn-sm btn-outline-danger" (click)="confirmDelete(college)" cdkDragDisabled
+      title="Delete college">
+      <i class="bi bi-trash"></i>
+    </button>
+
   </div>
+  }
+</div>
+}
+@if (selectedCollege) {
+<app-college-edit-modal [college]="selectedCollege" (close)="closeModal()" (saved)="onSaved()">
+</app-college-edit-modal>
+}
+
+@if (collegeToDelete) {
+<div class="modal-backdrop fade show"></div>
+
+<div class="modal fade show d-block" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title text-danger">Delete College</h5>
+        <button class="btn-close" (click)="cancelDelete()"></button>
+      </div>
+
+      <div class="modal-body">
+        <p class="mb-0">
+          Are you sure you want to delete
+          <strong>{{ collegeToDelete.title }}</strong>?
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" (click)="cancelDelete()">
+          Cancel
+        </button>
+        <button class="btn btn-danger btn-sm" (click)="deleteConfirmed()">
+          Delete
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
 }
