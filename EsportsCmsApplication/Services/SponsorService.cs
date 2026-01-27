@@ -20,7 +20,6 @@ namespace EsportsCmsApplication.Services
         {
             var sponsors = await _sponsorRepository.GetAllSponsorsAsync();
 
-//TODO Add mapper for sponsors
             var sponsorDtos = sponsors.Select(s => new SponsorDto
             {
                 SponsorId = s.SponsorId,
@@ -30,6 +29,13 @@ namespace EsportsCmsApplication.Services
             }).ToList();
 
             return sponsorDtos;
+        }
+
+        public async Task<SponsorDto> CreateSponsorAsync(CreateSponsorDto dto)
+        {
+            // Call repository, repository returns DTO
+            var created = await _sponsorRepository.CreateSponsorAsync(dto);
+            return created;
         }
     }
 }

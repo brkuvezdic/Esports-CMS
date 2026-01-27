@@ -1,0 +1,29 @@
+<!-- add-sponsor.component.html -->
+<div class="form-wrapper">
+  <form [formGroup]="sponsorForm" (ngSubmit)="submit()" class="sponsor-form">
+    <h2>Add Sponsor</h2>
+
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" formControlName="title" />
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Sponsor Tier</label>
+      <select formControlName="sponsorTier">
+        <option value="Silver">Silver</option>
+        <option value="Gold">Gold</option>
+        <option value="Platinum">Platinum</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="sponsorForm.invalid">
+      Add Sponsor
+    </button>
+  </form>
+</div>

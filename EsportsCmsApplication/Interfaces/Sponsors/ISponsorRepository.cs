@@ -1,4 +1,5 @@
-﻿using EsportsCmsDomain.EntitiesNew;
+﻿using EsportsCmsApplication.DTOs;
+using EsportsCmsDomain.EntitiesNew;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace EsportsCmsApplication.Interfaces.Sponsors
     public interface ISponsorRepository
     {
         Task<List<Sponsor>> GetAllSponsorsAsync();
+        Task<SponsorDto> CreateSponsorAsync(CreateSponsorDto dto);
 
     }
 }

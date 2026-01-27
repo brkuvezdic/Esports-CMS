@@ -26,5 +26,13 @@ namespace EsportsCmsAPI.Controllers
             var sponsors = await _service.GetAllSponsorsAsync();
             return Ok(sponsors);
         }
+
+        // POST: api/sponsors
+        [HttpPost]
+        public async Task<IActionResult> CreateSponsorAsync([FromBody] CreateSponsorDto dto)
+        {
+            var created = await _service.CreateSponsorAsync(dto);
+            return Created("api/Sponsors", created);
+        }
     }
 }

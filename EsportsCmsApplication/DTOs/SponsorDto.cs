@@ -18,12 +18,21 @@ namespace EsportsCmsApplication.DTOs
 
     public class CreateSponsorDto
     {
+        public int SponsorId { get; set; }
         [Required]
         [MaxLength(100)]
         public required string Title { get; set; }
         public string Description { get; set; } = string.Empty;
-        public string SponsorTier { get; set; } = null!;
+        public string SponsorTier { get; set; } = "Silver"!;
 
+    }
+
+    public class UpdateSponsorDto
+    {
+        public int SponsorId { get; set; }
+        public required string Title { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public string SponsorTier { get; set; } = "Standard";
     }
 
 }

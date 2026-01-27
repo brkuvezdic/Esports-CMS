@@ -12,6 +12,8 @@ namespace EsportsCmsApplication.Interfaces.Sponsors
     {
 
         Task<List<SponsorDto>> GetAllSponsorsAsync();
+        Task<SponsorDto> CreateSponsorAsync(CreateSponsorDto dto);
+
 
     }
 }

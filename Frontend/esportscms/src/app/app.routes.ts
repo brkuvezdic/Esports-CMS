@@ -29,8 +29,11 @@ export const routes: Routes = [
   {
     path: 'Schedule', loadComponent: () => import('./pages/schedule/schedule').then((m) => m.Schedule),
   },
-    {
+  {
     path: 'Cms/Schedule', loadComponent: () => import('./pages/schedule/schedule').then((m) => m.Schedule),
+  },
+  {
+    path: 'Cms/Sponsors', loadComponent: () => import('./pages/sponsorpagecomponent/sponsorpagecomponent').then((m) => m.Sponsorpagecomponent),
   },
   {
     path: 'forbidden',

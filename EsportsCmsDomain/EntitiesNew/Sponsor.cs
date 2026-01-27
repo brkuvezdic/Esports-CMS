@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EsportsCmsDomain.EntitiesNew;
 
-[Keyless]
 public partial class Sponsor
 {
+    [Key]
     public int SponsorId { get; set; }
 
     [StringLength(100)]
