@@ -31,9 +31,13 @@ export const routes: Routes = [
   },
   {
     path: 'Cms/Schedule', loadComponent: () => import('./pages/schedule/schedule').then((m) => m.Schedule),
+    canActivate: [AdminGuard]
+
   },
   {
     path: 'Cms/Sponsors', loadComponent: () => import('./pages/sponsorpagecomponent/sponsorpagecomponent').then((m) => m.Sponsorpagecomponent),
+    canActivate: [AdminGuard]
+
   },
   {
     path: 'forbidden',

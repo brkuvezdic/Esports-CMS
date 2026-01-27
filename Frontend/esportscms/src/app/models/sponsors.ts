@@ -1,5 +1,6 @@
 export interface SponsorModel {
-  title: string;
-  description: string;
-  sponsorTier: string;
+    sponsorId: number;
+    title: string;
+    description: string;
+    sponsorTier: string;
 }

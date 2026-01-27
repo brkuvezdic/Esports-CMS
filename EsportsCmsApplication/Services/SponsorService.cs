@@ -20,16 +20,29 @@ namespace EsportsCmsApplication.Services
         {
             var sponsors = await _sponsorRepository.GetAllSponsorsAsync();
 
-            var sponsorDtos = sponsors.Select(s => new SponsorDto
-            {
-                SponsorId = s.SponsorId,
-                Title = s.Title,
-                Description = s.Description,
-                SponsorTier = s.SponsorTier
-            }).ToList();
+            // Map tiers to numeric values for ordering
+            var tierOrder = new Dictionary<string, int>
+                    {
+                        { "Diamond", 1 },
+                        { "Platinum", 2 },
+                        { "Gold", 3 },
+                        { "Silver", 4 }
+                    };
+
+            var sponsorDtos = sponsors
+                .Select(s => new SponsorDto
+                {
+                    SponsorId = s.SponsorId,
+                    Title = s.Title,
+                    Description = s.Description,
+                    SponsorTier = s.SponsorTier
+                })
+                .OrderBy(s => tierOrder.ContainsKey(s.SponsorTier) ? tierOrder[s.SponsorTier] : int.MaxValue)
+                .ToList();
 
             return sponsorDtos;
         }
+
 
         public async Task<SponsorDto> CreateSponsorAsync(CreateSponsorDto dto)
         {
