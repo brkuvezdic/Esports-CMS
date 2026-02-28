@@ -14,4 +14,11 @@ namespace EsportsCmsApplication.DTOs
 
         public string Password { get; set; } = string.Empty;
     }
+
+    public class AssignUserToCollegeDto
+    {
+        public Guid UserId { get; set; }
+
+        public int CollegeId { get; set; }
+    }
 }

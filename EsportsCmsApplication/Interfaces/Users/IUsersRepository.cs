@@ -1,4 +1,5 @@
-﻿using EsportsCmsDomain.EntitiesNew;
+﻿using EsportsCmsApplication.DTOs;
+using EsportsCmsDomain.EntitiesNew;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace EsportsCmsApplication.Interfaces.Users
     public interface IUsersRepository
     {
         Task<List<User>> GetAllStudentsAsync();
-
+        Task<bool> AssignStudentToCollegeAsync(Guid? userId, int? collegeId);
     }
 }

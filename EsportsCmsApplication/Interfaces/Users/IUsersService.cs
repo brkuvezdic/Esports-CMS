@@ -11,6 +11,8 @@ namespace EsportsCmsApplication.Interfaces.Users
     public interface IUsersService
     {
         Task<List<UserDto>> GetAllStudentsAsync();
+        Task<bool> AssignStudentToCollegeAsync(AssignUserToCollegeDto dto);
+
 
     }
 }

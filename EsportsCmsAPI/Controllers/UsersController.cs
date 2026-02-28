@@ -29,6 +29,25 @@ namespace EsportsCmsAPI.Controllers
             return Ok(users);
         }
 
+        // POST: api/users/assign-college
+        [HttpPost("assign-college")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> AssignStudentToCollegeAsync(
+            [FromBody] AssignUserToCollegeDto dto)
+        {
+            if (dto == null)
+                return BadRequest("Invalid request.");
+
+            var success = await _service.AssignStudentToCollegeAsync(dto);
+
+            if (!success)
+                return NotFound("User or College not found.");
+
+            return Ok("Student assigned to college successfully.");
+        }
+
     }
 }
 

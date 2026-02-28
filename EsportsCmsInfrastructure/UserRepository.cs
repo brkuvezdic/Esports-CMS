@@ -1,4 +1,5 @@
-﻿using EsportsCmsApplication.Interfaces.Users;
+﻿using EsportsCmsApplication.DTOs;
+using EsportsCmsApplication.Interfaces.Users;
 using EsportsCmsDomain.EntitiesNew;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,9 +19,24 @@ namespace EsportsCmsInfrastructure
         }
 
 
+
         public Task<List<User>> GetAllStudentsAsync()
         {
             return _dbContext.Users.ToListAsync();
+        }
+
+        public async Task<bool> AssignStudentToCollegeAsync(Guid? userId, int? collegeId)
+        {
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user == null)
+                return false;
+
+            user.CollegeId = collegeId;
+
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
     }
 }
