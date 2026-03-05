@@ -13,6 +13,8 @@ namespace EsportsCmsApplication.DTOs
         public Guid Id { get; set; }
 
         public string Password { get; set; } = string.Empty;
+        public int? CollegeId { get; set; }
+
     }
 
     public class AssignUserToCollegeDto
@@ -20,5 +22,10 @@ namespace EsportsCmsApplication.DTOs
         public Guid UserId { get; set; }
 
         public int CollegeId { get; set; }
+    }
+
+    public class RemoveUserFromCollegeDto
+    {
+        public Guid UserId { get; set; }
     }
 }

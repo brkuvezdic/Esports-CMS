@@ -14,7 +14,22 @@ export class StudentsService {
   getStudents(): Observable<StudentModel[]> {
     return this.http.get<StudentModel[]>(`${this.baseUrl}api/Users`);
   }
-  updateStudentRoles(changes: { userId: number; roleId: number }[]): Observable<any> {
+updateStudentRoles(changes: { userId: string; roleId: number }[]): Observable<any> {
   return this.http.post(`${this.baseUrl}api/Users/UpdateRole`, changes);
+}
+
+assignStudentToCollege(userId: string, collegeId: number) {
+  return this.http.post(
+    `${this.baseUrl}api/Users/assign-college`,
+    { userId, collegeId }
+  );
+}
+
+
+  removeStudentFromCollege(userId: string) {
+  return this.http.post(
+    `${this.baseUrl}api/Users/remove-college`,
+    { userId }
+  );
 }
 }

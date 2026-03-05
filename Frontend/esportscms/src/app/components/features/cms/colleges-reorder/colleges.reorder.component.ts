@@ -47,7 +47,6 @@ export class CollegesReorder implements OnInit {
   }
 
   editCollege(college: CollegeModel) {
-    // clone so cancel doesn’t change list
     this.selectedCollege = { ...college };
   }
 

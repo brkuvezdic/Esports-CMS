@@ -1,4 +1,3 @@
-// src/app/pages/sponsors/add-sponsor.component.ts
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { SponsorsService } from '../../../services/sponsorsService';

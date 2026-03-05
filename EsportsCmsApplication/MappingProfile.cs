@@ -17,6 +17,8 @@ namespace EsportsCmsApplication
 
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<Role, RoleDto>().ReverseMap();
+            CreateMap<User, UserDto>()
+                .ForMember(dest => dest.CollegeId, opt => opt.MapFrom(src => src.CollegeId));
 
 
 

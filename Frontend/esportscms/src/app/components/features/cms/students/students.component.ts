@@ -16,14 +16,14 @@ import { FormsModule } from '@angular/forms';
 export class StudentsComponent implements OnInit {
   students: StudentModel[] = [];
   roles: RoleModel[] = [];
-  originalRoleIds: Map<number, number> = new Map();
+  originalRoleIds: Map<string, number> = new Map();
   isUpdateButtonDisabled = true;
 
   constructor(
     private studentService: StudentsService,
     private roleService: RoleService,
     private router: Router
-  ) { }
+  ) {}
 
   get isHidden(): boolean {
     return this.router.url === '/Cms/Students';
@@ -86,14 +86,14 @@ export class StudentsComponent implements OnInit {
   }
 
   updateRoles(): void {
-    const changes: { userId: number; roleId: number }[] = [];
+    const changes: { userId: string; roleId: number }[] = [];
     
     this.students.forEach(student => {
       const originalId = this.originalRoleIds.get(student.id);
       if (student.selectedRoleId && student.selectedRoleId !== originalId) {
         changes.push({
           userId: student.id,
-          roleId: student.selectedRoleId!
+          roleId: Number(student.selectedRoleId)
         });
       }
     });
@@ -113,10 +113,9 @@ export class StudentsComponent implements OnInit {
   }
 
   getChangedCount(): number {
-  return this.students.filter(student => {
-    const originalId = this.originalRoleIds.get(student.id);
-    return student.selectedRoleId && student.selectedRoleId !== originalId;
-  }).length;
-}
-
+    return this.students.filter(student => {
+      const originalId = this.originalRoleIds.get(student.id);
+      return student.selectedRoleId && student.selectedRoleId !== originalId;
+    }).length;
+  }
 }

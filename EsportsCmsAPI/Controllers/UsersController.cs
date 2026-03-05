@@ -45,7 +45,25 @@ namespace EsportsCmsAPI.Controllers
             if (!success)
                 return NotFound("User or College not found.");
 
-            return Ok("Student assigned to college successfully.");
+            return Ok(new { message = "Student assigned to college successfully." });
+        }
+
+        // POST: api/users/remove-college
+        [HttpPost("remove-college")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> RemoveStudentFromCollegeAsync(
+        [FromBody] RemoveUserFromCollegeDto dto)
+        {
+            if (dto == null)
+                return BadRequest("Invalid request");
+
+            var success = await _service.RemoveStudentFromCollegeAsync(dto);
+
+            if (!success)
+                return NotFound("User not found");
+
+            return Ok(new { message = "Student removed from college successfully." });
         }
 
     }

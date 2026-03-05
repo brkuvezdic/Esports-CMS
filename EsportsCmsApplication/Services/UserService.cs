@@ -2,6 +2,7 @@
 using EsportsCmsApplication.DTOs;
 using EsportsCmsApplication.Interfaces.Colleges;
 using EsportsCmsApplication.Interfaces.Users;
+using Microsoft.EntityFrameworkCore;
 
 namespace EsportsCmsApplication.Services
 {
@@ -33,6 +34,8 @@ namespace EsportsCmsApplication.Services
             );
         }
 
+
+
         public async Task<List<UserDto>> GetAllStudentsAsync()
         {
             var users = await _userRepository.GetAllStudentsAsync();
@@ -41,6 +44,11 @@ namespace EsportsCmsApplication.Services
                 .ToList();
 
             return _mapper.Map<List<UserDto>>(orderedUsers);
+        }
+
+        public async Task<bool> RemoveStudentFromCollegeAsync(RemoveUserFromCollegeDto dto)
+        {
+            return await _userRepository.RemoveStudentFromCollegeAsync(dto.UserId);
         }
     }
 }

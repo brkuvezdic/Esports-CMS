@@ -58,4 +58,18 @@ export class AuthService {
   logout() {
     localStorage.removeItem(this.tokenKey);
   }
+
+  getUserId(): string | null {
+  const token = this.getToken();
+  if (!token) return null;
+
+  const payload = JSON.parse(atob(token.split('.')[1]));
+
+  return (
+    payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'] ||
+    payload['nameid'] ||
+    payload['sub'] ||
+    null
+  );
+}
 }

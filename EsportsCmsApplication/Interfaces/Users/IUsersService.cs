@@ -12,6 +12,8 @@ namespace EsportsCmsApplication.Interfaces.Users
     {
         Task<List<UserDto>> GetAllStudentsAsync();
         Task<bool> AssignStudentToCollegeAsync(AssignUserToCollegeDto dto);
+        Task<bool> RemoveStudentFromCollegeAsync(RemoveUserFromCollegeDto userId);
+
 
 
     }

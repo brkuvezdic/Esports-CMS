@@ -38,5 +38,19 @@ namespace EsportsCmsInfrastructure
             await _dbContext.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> RemoveStudentFromCollegeAsync(Guid userId)
+        {
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user == null)
+                return false;
+
+            user.CollegeId = null;
+
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
     }
 }
