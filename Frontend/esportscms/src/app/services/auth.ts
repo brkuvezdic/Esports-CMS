@@ -55,6 +55,10 @@ export class AuthService {
     return this.getUserRole() === 'Admin';
   }
 
+  isStudent(): boolean {
+    return this.getUserRole() === 'Student';
+  }
+
   logout() {
     localStorage.removeItem(this.tokenKey);
   }

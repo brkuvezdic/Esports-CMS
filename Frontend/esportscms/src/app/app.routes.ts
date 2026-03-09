@@ -39,6 +39,12 @@ export const routes: Routes = [
     canActivate: [AdminGuard]
 
   },
+
+  {
+    path: 'Cms/ApplyToCollege', loadComponent: () => import('./cms/students/student-apply-college-component/student-apply-college-component').then((m) => m.StudentApplyCollegeComponent),
+    canActivate: [AdminGuard]
+
+  },
   {
     path: 'forbidden',
     loadComponent: () => import('./pages/about/about').then(m => m.AboutComponent)

@@ -1,6 +1,6 @@
-
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -10,11 +10,21 @@ import { Router, RouterModule } from '@angular/router';
   standalone: true,
 })
 export class LeftSidebar {
-  constructor(private router: Router
-  ) {}
 
+  constructor(
+    private router: Router,
+    private auth: AuthService
+  ) {}
 
   get isHidden(): boolean {
     return !this.router.url.includes('/Cms');
+  }
+
+  get isAdmin(): boolean {
+    return this.auth.getUserRole() === 'Admin';
+  }
+
+  get isStudent(): boolean {
+    return this.auth.getUserRole() === 'Student';
   }
 }

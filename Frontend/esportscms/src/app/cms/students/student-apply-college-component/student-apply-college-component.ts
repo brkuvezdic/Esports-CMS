@@ -5,6 +5,7 @@ import { StudentsService } from '../../../services/students';
 import { CollegeModel } from '../../../models/college';
 import { AuthService } from '../../../services/auth';
 import { StudentModel } from '../../../models/student';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-apply-college',
@@ -14,7 +15,12 @@ import { StudentModel } from '../../../models/student';
   styleUrls: ['./student-apply-college-component.css']
 })
 export class StudentApplyCollegeComponent implements OnInit {
+get ShowComponent(): boolean {
+  const isCmsRoute = this.router.url.toLowerCase().includes('/cms');
+  const isAuthenticated = !!this.auth.getToken();
 
+  return !(isCmsRoute && isAuthenticated);
+}
   colleges: CollegeModel[] = [];
   applying = false;
   currentUser?: StudentModel;
@@ -23,7 +29,8 @@ export class StudentApplyCollegeComponent implements OnInit {
     private collegesService: CollegesService,
     private studentsService: StudentsService,
     private auth: AuthService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) { }
 
   ngOnInit() {

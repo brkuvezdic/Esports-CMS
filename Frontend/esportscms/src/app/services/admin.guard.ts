@@ -9,7 +9,7 @@ export class AdminGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    if (this.auth.isAdmin()) return true;
+    if (this.auth.isAdmin() || this.auth.isStudent()) return true;
 
     this.router.navigate(['/forbidden']);
     return false;
