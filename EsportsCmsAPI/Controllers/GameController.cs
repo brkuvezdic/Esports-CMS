@@ -1,37 +1,26 @@
 ﻿using EsportsCmsApplication.DTOs;
-using EsportsCmsApplication.Interfaces.Colleges;
-using FluentValidation;
+using EsportsCmsApplication.Interfaces.Games;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EsportsCmsAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class GameController : ControllerBase
     {
-        private readonly ICollegeService _service;
-        //private readonly IValidator<CreateCollegeDto> createCollegeValidator;
-        //private readonly IValidator<UpdateCollegeDto> updateCollegeValidator;
+        private readonly IGameService _service;
 
-
-        public GameController(ICollegeService service /*IValidator<CreateCollegeDto> createCollegeValidator, IValidator<UpdateCollegeDto> updateCollegeValidator*/)
+        public GameController(IGameService service)
         {
             _service = service;
-            //this.createCollegeValidator = createCollegeValidator;
-            //this.updateCollegeValidator = updateCollegeValidator;
         }
 
-        //// GET: api/games
-        //[HttpGet(Name = "GetAllGames")]
-        //[ProducesResponseType(typeof(IEnumerable<GameDto>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> GetAllGamesAsync()
-        //{
-        //    var colleges = await _service.GetAllGamesAsync();
-        //    return Ok(colleges);
-        //}
-
-
+        [HttpGet(Name = "GetAllGames")]
+        public async Task<IActionResult> GetAllGamesAsync()
+        {
+            var games = await _service.GetAllGamesAsync();
+            return Ok(games);
+        }
     }
 
 

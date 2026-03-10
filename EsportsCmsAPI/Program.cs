@@ -4,6 +4,7 @@ using EsportsCmsApplication;
 using EsportsCmsApplication.DTOValidations;
 using EsportsCmsApplication.Interfaces.CalendarEvents;
 using EsportsCmsApplication.Interfaces.Colleges;
+using EsportsCmsApplication.Interfaces.Games;
 using EsportsCmsApplication.Interfaces.PandaScore;
 using EsportsCmsApplication.Interfaces.Roles;
 using EsportsCmsApplication.Interfaces.Sponsors;
@@ -67,6 +68,9 @@ namespace EsportsCmsAPI
             builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<ICalendarEventRepository, CalendarEventRepository>();
             builder.Services.AddScoped<ICalendarEventService, CalendarEventService>();
+            builder.Services.AddScoped<IGameRepository, GameRepository>();
+            builder.Services.AddScoped<IGameService, GameService>();
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("default", policy =>

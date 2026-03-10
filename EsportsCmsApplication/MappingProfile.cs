@@ -20,6 +20,7 @@ namespace EsportsCmsApplication
             CreateMap<User, UserDto>()
                 .ForMember(dest => dest.CollegeId, opt => opt.MapFrom(src => src.CollegeId));
 
+            CreateMap<Game, GameDto>().ReverseMap();
 
 
             CreateMap<CalendarEvent, CalendarEventDto>();
