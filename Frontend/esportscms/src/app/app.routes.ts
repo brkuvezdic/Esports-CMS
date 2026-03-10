@@ -45,6 +45,11 @@ export const routes: Routes = [
     canActivate: [AdminGuard]
 
   },
+    {
+    path: 'Cms/JoinTeam', loadComponent: () => import('./cms/students/student-join-team-component/student-join-team-component').then((m) => m.StudentJoinTeamComponent),
+    canActivate: [AdminGuard]
+
+  },
   {
     path: 'forbidden',
     loadComponent: () => import('./pages/about/about').then(m => m.AboutComponent)
