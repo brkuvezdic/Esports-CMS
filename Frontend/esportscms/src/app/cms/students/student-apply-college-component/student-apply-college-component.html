@@ -1,36 +1,37 @@
 @if (!ShowComponent) {
 
-@if (hasCollege) {
-  <div class="d-flex justify-content-center mb-4">
-    <button
-      class="btn btn-danger"
-      (click)="removeFromCollege()">
-      Leave College
-    </button>
-  </div>
-}
+<div class="college-wrapper">
 
-@if (!hasCollege) {
-  <h2 class="mb-4 text-center">Apply to a College</h2>
+  @if (hasCollege) {
+    <div class="center">
+      <button class="leave-btn" (click)="removeFromCollege()">
+        Leave College
+      </button>
+    </div>
+  } @else {
 
-  <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let college of colleges">
-      <div class="card h-100 shadow">
-        <div class="card-body">
-          <h5 class="card-title">{{ college.title }}</h5>
-          <p class="card-text">{{ college.description }}</p>
+    <h5 class="title">Apply to a College</h5>
+
+    <div class="college-list">
+      <div class="college-item" *ngFor="let college of colleges">
+
+        <div class="college-info">
+          <div class="college-name">{{ college.title }}</div>
+          <div class="college-desc">{{ college.description }}</div>
         </div>
-        <div class="card-footer bg-white border-0">
-          <button
-            class="btn btn-primary w-100"
-            (click)="apply(college.collegeId)"
-            [disabled]="applying">
-            Apply
-          </button>
-        </div>
+
+        <button
+          class="apply-btn"
+          (click)="apply(college.collegeId)"
+          [disabled]="applying">
+          Apply
+        </button>
+
       </div>
     </div>
-  </div>
-}
+
+  }
+
+</div>
 
 }

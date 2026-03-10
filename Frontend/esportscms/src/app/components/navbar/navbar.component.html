@@ -22,7 +22,7 @@
           <a class="nav-link" (click)="auth.logout()" routerLink="/" routerLinkActive="router-link-active">Logout</a>
         </li>
         }
-        @if (auth.isAdmin()) {
+        @if (auth.isAdmin() || auth.isStudent()) {
         <li class="nav-item">
           <a class="nav-link" routerLink="/Cms" routerLinkActive="active">CMS</a>
         </li>

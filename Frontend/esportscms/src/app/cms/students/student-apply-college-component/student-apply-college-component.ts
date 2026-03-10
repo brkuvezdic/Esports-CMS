@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class StudentApplyCollegeComponent implements OnInit {
 get ShowComponent(): boolean {
-  const isCmsRoute = this.router.url.toLowerCase().includes('/cms');
+  const isCmsRoute = this.router.url.toLowerCase().includes('/cms/applytocollege');
   const isAuthenticated = !!this.auth.getToken();
 
   return !(isCmsRoute && isAuthenticated);
