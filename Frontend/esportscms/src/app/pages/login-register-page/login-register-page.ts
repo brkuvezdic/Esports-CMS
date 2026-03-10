@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-register-page',
@@ -16,7 +17,8 @@ export class LoginRegisterPage {
   form: FormGroup;
   message = '';
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {
+  constructor(private fb: FormBuilder, private auth: AuthService,  private router: Router
+) {
     this.form = this.fb.group({
       username: [''],
       password: ['']
@@ -28,30 +30,33 @@ export class LoginRegisterPage {
     this.message = '';
   }
 
-  submit() {
-    const request = this.form.value;
+submit() {
+  const request = this.form.value;
 
-    if (this.isLoginMode) {
-      this.auth.login(request).subscribe({
-        next: (res) => {
-          this.message = 'Logged in!';
-          localStorage.setItem('access_token', res.accessToken);
-          localStorage.setItem('refresh_token', res.refreshToken);
-        },
-        error: (err) => {
-          this.message = err.error || 'Invalid login.';
-        }
-      });
-    } else {
-      this.auth.register(request).subscribe({
-        next: () => {
-          this.message = 'Account created! You can now log in.';
-          this.isLoginMode = true;
-        },
-        error: (err) => {
-          this.message = err.error || 'Registration failed.';
-        }
-      });
-    }
+  if (this.isLoginMode) {
+    this.auth.login(request).subscribe({
+      next: (res) => {
+        this.message = 'Logged in!';
+
+        localStorage.setItem('access_token', res.accessToken);
+        localStorage.setItem('refresh_token', res.refreshToken);
+
+        this.router.navigate(['/Cms']);
+      },
+      error: (err) => {
+        this.message = err.error || 'Invalid login.';
+      }
+    });
+  } else {
+    this.auth.register(request).subscribe({
+      next: () => {
+        this.message = 'Account created! You can now log in.';
+        this.isLoginMode = true;
+      },
+      error: (err) => {
+        this.message = err.error || 'Registration failed.';
+      }
+    });
   }
+}
 }
