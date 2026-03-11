@@ -9,5 +9,7 @@ public partial class Team
 
     public int CollegeId { get; set; }
 
+    public int GameId { get; set; }
+
     public string Title { get; set; } = null!;
 }

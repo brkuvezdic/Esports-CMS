@@ -2,6 +2,7 @@
 using EsportsCmsApplication.DTOs;
 using EsportsCmsApplication.Interfaces.Colleges;
 using EsportsCmsApplication.Interfaces.Users;
+using EsportsCmsDomain.EntitiesNew;
 using Microsoft.EntityFrameworkCore;
 
 namespace EsportsCmsApplication.Services
@@ -50,5 +51,16 @@ namespace EsportsCmsApplication.Services
         {
             return await _userRepository.RemoveStudentFromCollegeAsync(dto.UserId);
         }
+
+        public async Task<UserDto?> GetUserByIdAsync(Guid userId)
+        {
+            var user = await _userRepository.GetUserByIdAsync(userId);
+
+            if (user == null)
+                return null;
+
+            return _mapper.Map<UserDto>(user);
+        }
+
     }
 }

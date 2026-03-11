@@ -52,5 +52,13 @@ namespace EsportsCmsInfrastructure
 
             return true;
         }
+
+
+        public Task<User?> GetUserByIdAsync(Guid userId)
+        {
+            return _dbContext.Users
+                .FirstOrDefaultAsync(u => u.Id == userId);
+        }
+
     }
 }

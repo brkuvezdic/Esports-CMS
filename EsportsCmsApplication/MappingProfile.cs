@@ -22,7 +22,7 @@ namespace EsportsCmsApplication
 
             CreateMap<Game, GameDto>().ReverseMap();
 
-
+            CreateMap<Team, TeamDto>();
             CreateMap<CalendarEvent, CalendarEventDto>();
 
             CreateMap<CreateCalendarEventDto, CalendarEvent>();

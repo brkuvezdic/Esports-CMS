@@ -8,6 +8,7 @@ using EsportsCmsApplication.Interfaces.Games;
 using EsportsCmsApplication.Interfaces.PandaScore;
 using EsportsCmsApplication.Interfaces.Roles;
 using EsportsCmsApplication.Interfaces.Sponsors;
+using EsportsCmsApplication.Interfaces.Teams;
 using EsportsCmsApplication.Interfaces.Users;
 using EsportsCmsApplication.Services;
 using EsportsCmsDomain.Entities;
@@ -70,7 +71,11 @@ namespace EsportsCmsAPI
             builder.Services.AddScoped<ICalendarEventService, CalendarEventService>();
             builder.Services.AddScoped<IGameRepository, GameRepository>();
             builder.Services.AddScoped<IGameService, GameService>();
-
+            builder.Services.AddScoped<ITeamRepository, TeamRepository>();
+            builder.Services.AddScoped<ITeamService, TeamService>();
+            //builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<ITeamRepository, TeamRepository>();
+            builder.Services.AddScoped<ITeamService, TeamService>();
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("default", policy =>
