@@ -34,10 +34,27 @@ namespace EsportsCmsApplication.Services
         {
             var user = await _userRepository.GetUserByIdAsync(userId);
 
-            if (user == null || user.CollegeId == null)
+            if (user == null)
                 return new List<TeamDto>();
 
-            var teams = await _teamRepository.GetTeamsByCollegeIdAsync(user.CollegeId.Value);
+            // USER ALREADY IN TEAM
+            if (user.TeamId != null)
+            {
+                var allTeams = await _teamRepository.GetAllTeamsAsync();
+
+                var joinedTeam = allTeams
+                    .Where(x => x.TeamId == user.TeamId)
+                    .ToList();
+
+                return _mapper.Map<List<TeamDto>>(joinedTeam);
+            }
+
+            // USER NOT IN TEAM
+            if (user.CollegeId == null)
+                return new List<TeamDto>();
+
+            var teams = await _teamRepository
+                .GetTeamsByCollegeIdAsync(user.CollegeId.Value);
 
             return _mapper.Map<List<TeamDto>>(teams);
         }

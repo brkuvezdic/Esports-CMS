@@ -18,6 +18,7 @@ public partial class User
     public DateTime? RefreshTokenExpiryTime { get; set; }
 
     public int? CollegeId { get; set; }
+    public int? TeamId { get; set; }
 
     public virtual College? College { get; set; }
 }

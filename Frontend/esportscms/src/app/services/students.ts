@@ -18,6 +18,24 @@ updateStudentRoles(changes: { userId: string; roleId: number }[]): Observable<an
   return this.http.post(`${this.baseUrl}api/Users/UpdateRole`, changes);
 }
 
+joinTeam(userId: string, teamId: number) {
+  return this.http.post(
+    `${this.baseUrl}api/Users/join-team`,
+    {
+      userId,
+      teamId,
+    }
+  );
+}
+
+leaveTeam(userId: string) {
+  return this.http.post(
+    `${this.baseUrl}api/Users/leave-team`,
+    {
+      userId,
+    }
+  );
+}
 assignStudentToCollege(userId: string, collegeId: number) {
   return this.http.post(
     `${this.baseUrl}api/Users/assign-college`,
@@ -31,5 +49,6 @@ assignStudentToCollege(userId: string, collegeId: number) {
     `${this.baseUrl}api/Users/remove-college`,
     { userId }
   );
+  
 }
 }

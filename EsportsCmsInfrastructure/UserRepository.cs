@@ -60,5 +60,35 @@ namespace EsportsCmsInfrastructure
                 .FirstOrDefaultAsync(u => u.Id == userId);
         }
 
+        public async Task<bool> JoinTeamAsync(Guid userId, int teamId)
+        {
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user == null)
+                return false;
+
+            user.TeamId = teamId;
+
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> LeaveTeamAsync(Guid userId)
+        {
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user == null)
+                return false;
+
+            user.TeamId = null;
+
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
     }
 }

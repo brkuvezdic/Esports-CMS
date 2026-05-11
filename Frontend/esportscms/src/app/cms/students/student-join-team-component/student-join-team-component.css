@@ -23,3 +23,33 @@
   width: 100%;
   background: #f8f8f8;
 }
+
+.team-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.join-btn,
+.leave-btn {
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.join-btn {
+  background: #28a745;
+  color: white;
+}
+
+.leave-btn {
+  background: #dc3545;
+  color: white;
+}

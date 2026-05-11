@@ -1,4 +1,5 @@
 ﻿using EsportsCmsApplication.DTOs;
+using EsportsCmsApplication.DTOs.EsportsCmsApplication.DTOs;
 using EsportsCmsDomain.EntitiesNew;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace EsportsCmsApplication.Interfaces.Users
         Task<bool> RemoveStudentFromCollegeAsync(RemoveUserFromCollegeDto userId);
 
         Task<UserDto?> GetUserByIdAsync(Guid userId);
+        Task<bool> JoinTeamAsync(JoinTeamDto dto);
+        Task<bool> LeaveTeamAsync(LeaveTeamDto dto);
 
 
     }

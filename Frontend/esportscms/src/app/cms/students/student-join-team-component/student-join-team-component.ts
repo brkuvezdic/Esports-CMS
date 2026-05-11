@@ -16,7 +16,10 @@ import { TeamModel } from '../../../models/team';
   styleUrl: './student-join-team-component.css',
 })
 export class StudentJoinTeamComponent implements OnInit {
-  teams: TeamModel[] = [];
+ teams: TeamModel[] = [];
+
+  selectedTeamId: number | null = null;
+
   loading = false;
 
   constructor(
@@ -32,17 +35,22 @@ export class StudentJoinTeamComponent implements OnInit {
   }
 
   loadTeams(): void {
-    const userId = this.auth.getUserId();
+    const user = this.auth.getUserId();
 
-    if (!userId) {
+    if (!user) {
       return;
     }
 
     this.loading = true;
 
-    this.teamService.getTeamsForUser(userId).subscribe({
+    this.teamService.getTeamsForUser(user).subscribe({
       next: (teams) => {
         this.teams = teams;
+
+        if (teams.length === 1) {
+          this.selectedTeamId = teams[0].teamId;
+        }
+
         this.loading = false;
         this.cdr.detectChanges();
       },
@@ -51,6 +59,46 @@ export class StudentJoinTeamComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  joinTeam(teamId: number): void {
+    const user = this.auth.getUserId();
+    if (!user) {
+  return;
+}
+    this.studentsService
+      .joinTeam(user, teamId)
+      .subscribe({
+        next: () => {
+          this.selectedTeamId = teamId;
+
+          this.teams = this.teams.filter(
+            (x) => x.teamId === teamId
+          );
+
+          this.cdr.detectChanges();
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
+  }
+
+    leaveTeam(): void {
+    const user = this.auth.getUserId();
+if (!user) {
+  return;
+}
+    this.studentsService.leaveTeam(user)
+      .subscribe({
+        next: () => {
+          this.selectedTeamId = null;
+          this.loadTeams();
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
   }
 
   get ShowComponent(): boolean {

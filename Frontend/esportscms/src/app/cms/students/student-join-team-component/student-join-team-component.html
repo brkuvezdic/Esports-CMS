@@ -2,39 +2,60 @@
 
 <div class="teams-container">
 
-    <h2>My Teams</h2>
+  <h2>My Teams</h2>
 
-    @if (loading) {
+  @if (loading) {
     <p>Loading teams...</p>
-    }
+  }
 
-    @if (!loading && teams.length === 0) {
+  @if (!loading && teams.length === 0) {
     <p>No teams found.</p>
-    }
+  }
 
-    @if (teams.length > 0) {
+  @if (teams.length > 0) {
 
     <div class="team-list">
 
-        @for (team of teams; track team.teamId) {
+      @for (team of teams; track team.teamId) {
 
         <div class="team-card">
 
+          <div class="team-header">
+
             <h3>{{ team.title }}</h3>
 
-            <p><strong>Team ID:</strong> {{ team.teamId }}</p>
+            @if (selectedTeamId === team.teamId) {
 
-            <p><strong>Game:</strong> {{ team.gameName }}</p>
+              <button
+                class="leave-btn"
+                (click)="leaveTeam()">
+                −
+              </button>
 
-            <p><strong>College ID:</strong> {{ team.collegeId }}</p>
+            } @else {
+
+              <button
+                class="join-btn"
+                (click)="joinTeam(team.teamId)">
+                +
+              </button>
+
+            }
+
+          </div>
+
+          <p>
+            <strong>Game:</strong>
+            {{ team.gameName }}
+          </p>
 
         </div>
 
-        }
+      }
 
     </div>
 
-    }
+  }
 
 </div>
 

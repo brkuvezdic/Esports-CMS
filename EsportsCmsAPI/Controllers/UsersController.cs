@@ -1,7 +1,8 @@
 ﻿using EsportsCmsApplication.DTOs;
+using EsportsCmsApplication.DTOs.EsportsCmsApplication.DTOs;
+using EsportsCmsApplication.Interfaces.Users;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using EsportsCmsApplication.Interfaces.Users;
 namespace EsportsCmsAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -64,6 +65,30 @@ namespace EsportsCmsAPI.Controllers
                 return NotFound("User not found");
 
             return Ok(new { message = "Student removed from college successfully." });
+        }
+
+        [HttpPost("join-team")]
+        public async Task<IActionResult> JoinTeam(
+    JoinTeamDto dto)
+        {
+            var result = await _service.JoinTeamAsync(dto);
+
+            if (!result)
+                return BadRequest();
+
+            return Ok();
+        }
+
+        [HttpPost("leave-team")]
+        public async Task<IActionResult> LeaveTeam(
+            LeaveTeamDto dto)
+        {
+            var result = await _service.LeaveTeamAsync(dto);
+
+            if (!result)
+                return BadRequest();
+
+            return Ok();
         }
 
     }

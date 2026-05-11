@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EsportsCmsApplication.DTOs;
+using EsportsCmsApplication.DTOs.EsportsCmsApplication.DTOs;
 using EsportsCmsApplication.Interfaces.Colleges;
 using EsportsCmsApplication.Interfaces.Users;
 using EsportsCmsDomain.EntitiesNew;
@@ -60,6 +61,19 @@ namespace EsportsCmsApplication.Services
                 return null;
 
             return _mapper.Map<UserDto>(user);
+        }
+
+        public async Task<bool> JoinTeamAsync(JoinTeamDto dto)
+        {
+            return await _userRepository.JoinTeamAsync(
+                dto.UserId,
+                dto.TeamId
+            );
+        }
+
+        public async Task<bool> LeaveTeamAsync(LeaveTeamDto dto)
+        {
+            return await _userRepository.LeaveTeamAsync(dto.UserId);
         }
 
     }
