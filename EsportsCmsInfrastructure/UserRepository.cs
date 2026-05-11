@@ -47,6 +47,7 @@ namespace EsportsCmsInfrastructure
                 return false;
 
             user.CollegeId = null;
+            user.TeamId = null;
 
             await _dbContext.SaveChangesAsync();
 
