@@ -20,11 +20,14 @@ namespace EsportsCmsInfrastructure
 
         public Task<List<Team>> GetAllTeamsAsync()
         {
-            return _dbContext.Teams.ToListAsync();
+            return _dbContext.Teams
+                .Include(t => t.Game)
+                .ToListAsync();
         }
         public Task<List<Team>> GetTeamsByCollegeIdAsync(int collegeId)
         {
             return _dbContext.Teams
+                .Include(t => t.Game)
                 .Where(t => t.CollegeId == collegeId)
                 .ToListAsync();
         }

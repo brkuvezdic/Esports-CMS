@@ -11,6 +11,9 @@ namespace EsportsCmsApplication.DTOs
         public int TeamId { get; set; }
         public int CollegeId { get; set; }
         public int GameId { get; set; }
+
+        public string GameName { get; set; } = null!;
+
         public string Title { get; set; } = null!;
     }
 }

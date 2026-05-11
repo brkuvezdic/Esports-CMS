@@ -30,6 +30,12 @@ namespace EsportsCmsApplication
             CreateMap<UpdateCalendarEventDto, CalendarEvent>()
                 .ForAllMembers(opts =>
                     opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<Team, TeamDto>()
+    .ForMember(
+        dest => dest.GameName,
+        opt => opt.MapFrom(src => src.Game.GameName)
+    );
         }
     }
 }

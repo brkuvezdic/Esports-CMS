@@ -12,4 +12,6 @@ public partial class Team
     public int GameId { get; set; }
 
     public string Title { get; set; } = null!;
+
+    public virtual Game Game { get; set; } = null!;
 }

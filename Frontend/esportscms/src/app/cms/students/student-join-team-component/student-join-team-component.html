@@ -1,5 +1,41 @@
 @if (!ShowComponent) {
 
-<p>student-join-team-component works!</p>
+<div class="teams-container">
+
+    <h2>My Teams</h2>
+
+    @if (loading) {
+    <p>Loading teams...</p>
+    }
+
+    @if (!loading && teams.length === 0) {
+    <p>No teams found.</p>
+    }
+
+    @if (teams.length > 0) {
+
+    <div class="team-list">
+
+        @for (team of teams; track team.teamId) {
+
+        <div class="team-card">
+
+            <h3>{{ team.title }}</h3>
+
+            <p><strong>Team ID:</strong> {{ team.teamId }}</p>
+
+            <p><strong>Game:</strong> {{ team.gameName }}</p>
+
+            <p><strong>College ID:</strong> {{ team.collegeId }}</p>
+
+        </div>
+
+        }
+
+    </div>
+
+    }
+
+</div>
 
 }
