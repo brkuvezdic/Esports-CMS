@@ -1,38 +1,22 @@
-.sidebar {
-  width: 220px;
-  background-color: #111827;
-  padding-top: 1rem;
-  color: white;
-  position: fixed;
-  top: 56px;
-  bottom: 0;
-  left: 0;
-  overflow-y: auto;
+.sidebar{width:220px;background:var(--color-strong);color:var(--color-on-dark);padding-top:var(--space-md);position:fixed;top:56px;bottom:0;left:0;overflow:auto}
+.sidebar ul{list-style:none;padding:0;margin:0}
+.sidebar li{margin-bottom:0.35rem}
+.sidebar a{display:block;padding:0.65rem 0.9rem;color:var(--color-muted);text-decoration:none;font-weight:600;border-radius:6px}
+.sidebar a:hover{background:color-mix(in srgb,var(--color-strong) 90%, var(--color-primary) 10%);color:var(--color-on-dark)}
+.sidebar a.active{background:var(--color-primary);color:var(--color-on-dark)}
+
+@media (max-width:900px){
+  .sidebar{position:relative;width:100%;top:0;height:auto}
 }
 
-.sidebar ul {
-  list-style: none;
-  padding-left: 0;
+/* Keyboard focus styles */
+.sidebar a:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--color-primary) 36%, transparent);
+  outline-offset:2px;
+  background:color-mix(in srgb,var(--color-primary) 8%, transparent);
 }
 
-.sidebar li {
-  margin-bottom: 0.5rem;
-}
-
-.sidebar a {
-  display: block;
-  padding: 0.75rem 1rem;
-  color: #d1d5db;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.sidebar a:hover {
-  background-color: #1f2937;
-  color: white;
-}
-
-.sidebar a.active {
-  background-color: #2563eb;
-  color: white;
+/* Ensure links are easily tappable on small screens */
+@media (max-width:700px){
+  .sidebar a{padding:var(--space-sm)}
 }

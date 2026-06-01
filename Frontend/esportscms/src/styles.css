@@ -1,17 +1,88 @@
-html, body {
-  height: 100%;
-  margin: 0;
+:root{
+  /* Color palette (refreshed: less white, softer surfaces, teal primary) */
+  --color-bg-start: #e9f2f5; /* very soft blue-gray */
+  --color-bg-end:   #f6fbfc; /* near-white for subtle depth */
+  --color-surface:  #f3f7f9; /* soft off-white card surface */
+  --color-surface-strong: #eef4f6; /* slightly darker surface for panels */
+  --color-primary:  #0ea5a4; /* teal */
+  --color-primary-600:#028484;
+  --color-muted:    #58616a;
+  --color-strong:   #0f1721; /* main text color, slightly deeper */
+  --color-success:  #10b981;
+  --color-danger:   #ef4444;
+  --color-on-primary:#ffffff;
+  --color-on-dark:  #ffffff;
+  --color-on-surface: var(--color-strong);
+
+  /* Elevation / shadows */
+  --elev-1: 0 6px 18px rgba(12,18,30,0.06);
+  --elev-2: 0 12px 36px rgba(12,18,30,0.10);
+  --elev-3: 0 20px 60px rgba(12,18,30,0.14);
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+
+  /* Typography */
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --fs-base: 16px;
+  --line-height: 1.45;
+  /* Heading scale */
+  --h1-size: 2.4rem;
+  --h2-size: 1.6rem;
+  --h3-size: 1.125rem;
+  --lead-size: 1.125rem;
+  --heading-weight: 800;
 }
 
+/* Reset & base */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:var(--font-sans);font-size:var(--fs-base);line-height:var(--line-height);background:linear-gradient(180deg,var(--color-bg-start),var(--color-bg-end));color:var(--color-strong)}
 
-/* Main content adjustment when sidebar is visible */
-.main-content {
-  margin-left: 220px; /* same as sidebar width */
-  padding: 1rem;
-  transition: margin-left 0.3s; /* smooth transition if sidebar toggles */
+/* App container layout: sidebar + content */
+.app-root{
+  display:grid;
+  grid-template-columns: 240px 1fr;
+  min-height:100vh;
+  gap:var(--space-md);
 }
 
-/* Optional: smaller margin when sidebar is hidden */
-.main-content.full-width {
-  margin-left: 0;
+.main-content{padding:var(--space-md);background:transparent}
+
+/* Card / surface default to soft surface color for less-white UI */
+.card, .panel, .cms-card, .sponsor-card{background:var(--color-surface);border-radius:12px;box-shadow:var(--elev-1)}
+
+/* Responsive: collapse to single column on small screens */
+@media (max-width: 900px){
+  .app-root{grid-template-columns:1fr}
+  .sidebar{position:relative;width:100%;top:0;}
+  .main-content{padding:var(--space-sm)}
 }
+
+/* Utility helpers */
+.container{max-width:1100px;margin:0 auto;padding:0 var(--space-md)}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+/* Typography helpers */
+h1,h2,h3,h4{margin:0;color:var(--color-strong);font-family:var(--font-sans)}
+h1{font-size:var(--h1-size);line-height:1.04;font-weight:var(--heading-weight)}
+h2{font-size:var(--h2-size);line-height:1.08;font-weight:700}
+h3{font-size:var(--h3-size);line-height:1.12;font-weight:700}
+.lead{font-size:var(--lead-size);color:var(--color-muted);margin-bottom:var(--space-md)}
+.muted{color:var(--color-muted)}
+
+/* Simple form of focus-visible using :focus-visible where supported */
+*:focus{outline:none}
+*:focus-visible{outline:3px solid color-mix(in srgb, var(--color-primary) 50%, transparent);outline-offset:2px}
+
+/* Small components defaults */
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 0.9rem;border-radius:0.5rem;border:1px solid transparent;background:var(--color-primary);color:var(--color-on-primary);text-decoration:none;box-shadow:var(--elev-1)}
+.btn--ghost{background:transparent;color:var(--color-strong);border-color:transparent}
+
+/* Live indicator token-based */
+.live-indicator{color:var(--color-danger);font-weight:600;display:inline-flex;align-items:center;gap:0.35rem}
+.live-indicator::before{content:'';width:0.6rem;height:0.6rem;border-radius:50%;background:var(--color-danger)}
+

@@ -1,3 +1,10 @@
-* {
-    background-color: rgb(240, 239, 239);
+/* App-level overrides use tokens from global styles */
+:root {
+    --app-bg: transparent;
 }
+
+body, app-root {
+    background: var(--app-bg);
+}
+
+/* Keep component-specific resets minimal to avoid global side-effects */

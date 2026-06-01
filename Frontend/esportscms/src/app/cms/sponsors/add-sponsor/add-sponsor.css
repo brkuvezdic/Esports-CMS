@@ -1,70 +1,13 @@
-/* add-sponsor.component.css */
+.form-wrapper{min-height:60vh;display:flex;align-items:center;justify-content:center;padding:var(--space-md)}
+.sponsor-form{width:100%;max-width:640px;padding:var(--space-md);background:var(--color-surface);border-radius:12px;box-shadow:0 12px 30px rgba(16,24,40,0.06)}
+.sponsor-form h2{text-align:center;margin-bottom:var(--space-md);color:var(--color-strong)}
+.form-group{display:flex;flex-direction:column;margin-bottom:var(--space-sm)}
+.form-group label{font-weight:700;margin-bottom:0.35rem;color:var(--color-strong)}
+.form-group input,.form-group textarea,.form-group select{padding:0.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06);font-size:0.95rem;background:transparent}
+.form-group textarea{resize:vertical;min-height:100px}
+.sponsor-actions{display:flex;gap:var(--space-sm);align-items:center}
+button{width:100%;padding:0.7rem;margin-top:0.5rem;border:none;border-radius:8px;background:var(--color-primary);color:var(--color-on-primary);font-size:1rem;font-weight:700;cursor:pointer;transition:background-color 0.14s ease}
+button:hover:not(:disabled){background:var(--color-primary-600)}
+button:disabled{background:#9ca3af;cursor:not-allowed}
 
-.form-wrapper {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sponsor-form {
-  width: 100%;
-  max-width: 420px;
-  padding: 2rem;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.sponsor-form h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  padding: 0.6rem 0.7rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 0.95rem;
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
-button {
-  width: 100%;
-  padding: 0.7rem;
-  margin-top: 1rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #2563eb;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-button:hover:not(:disabled) {
-  background-color: #1e40af;
-}
-
-button:disabled {
-  background-color: #9ca3af;
-  cursor: not-allowed;
-}
+@media(max-width:700px){.sponsor-form{padding:var(--space-sm);max-width:100%}}

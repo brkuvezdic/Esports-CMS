@@ -1,33 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">ESports CMS</a>
+<header class="navbar">
+  <a class="brand" routerLink="/">ESports CMS</a>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/About" routerLinkActive="router-link-active">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link live-indicator" routerLink="/UpcomingMatches" routerLinkActive="router-link-active">
-            Upcoming Matches
-          </a>
-        </li>
-        @if (!auth.getToken()) {
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Login" routerLinkActive="active">Login</a>
-        </li>
-        }
-        @if (auth.getToken()) {
-        <li class="nav-item">
-          <a class="nav-link" (click)="auth.logout()" routerLink="/" routerLinkActive="router-link-active">Logout</a>
-        </li>
-        }
-        @if (auth.isAdmin() || auth.isStudent()) {
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Cms" routerLinkActive="active">CMS</a>
-        </li>
-        }
-      </ul>
-    </div>
-  </div>
-</nav>
+  <nav aria-label="Primary navigation">
+    <ul class="nav-links">
+      <li><a routerLink="/About" routerLinkActive="router-link-active">About</a></li>
+      <li><a class="live-indicator" routerLink="/UpcomingMatches" routerLinkActive="router-link-active">Upcoming Matches</a></li>
+      @if (!auth.getToken()) {
+      <li><a routerLink="/Login" routerLinkActive="active">Login</a></li>
+      }
+      @if (auth.getToken()) {
+      <li><a (click)="auth.logout()" routerLink="/" routerLinkActive="router-link-active">Logout</a></li>
+      }
+      @if (auth.isAdmin() || auth.isStudent()) {
+      <li><a routerLink="/Cms" routerLinkActive="active">CMS</a></li>
+      }
+    </ul>
+  </nav>
+</header>

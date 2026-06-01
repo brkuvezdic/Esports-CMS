@@ -1,30 +1,103 @@
-.marquee {
-  overflow: hidden;
-  background-color: #222;
-  white-space: nowrap;
-  width: 100%;
-  box-sizing: border-box;
+.marquee{overflow:hidden;position:relative;width:100%;box-sizing:border-box;padding:var(--space-sm) 0;background:transparent;white-space:nowrap}
+.marquee__group{display:inline-flex;gap:2.5rem;align-items:center;padding-right:2rem;flex-wrap:nowrap;white-space:nowrap}
+
+/* Each identical .marquee__group is translated left by its own width (-100%)
+	 so a duplicated sequence (group + group) appears as a continuous loop. */
+.marquee__group{animation:marquee-scroll 18s linear infinite}
+.marquee__group img{height:36px;object-fit:contain;display:block}
+.sponsor{display:inline-flex;align-items:center;gap:var(--space-sm);color:var(--color-strong);font-weight:600;white-space:nowrap}
+
+@keyframes marquee-scroll{
+	0%{transform:translateX(0)}
+	100%{transform:translateX(-100%)}
 }
 
-.marquee__group {
-  display: inline-block;
-  padding-left: 100%;
-  animation: marquee 20s linear infinite;
+/* Pause on hover for discoverability */
+.marquee:hover .marquee__group{animation-play-state:paused}
+
+/* Respect users' reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+	.marquee__group{animation:none}
 }
 
-.sponsor {
-  display: inline-block;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin: 0 50px;
+/* Tier-specific styling */
+.sponsor{padding:0.25rem 0.6rem;border-radius:999px;background:transparent;transition:background 200ms,transform 200ms}
+.sponsor:hover{transform:translateY(-1px)}
+
+.sponsor[data-tier="Platinum"]{
+	position:relative;
+	padding:0.4rem 0.9rem;
+	border-radius:1.5rem;
+	background:linear-gradient(90deg,#0b1220 0%, #16202b 100%);
+	color:var(--color-on-dark);
+	font-weight:800;
+	font-size:1.05rem;
+	box-shadow:0 12px 36px rgba(12,18,30,0.45);
+	border:1px solid rgba(255,255,255,0.06);
+	transform:translateZ(0);
+	overflow:visible;
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+.sponsor[data-tier="Platinum"]::after{
+	content:'';
+	position:absolute;
+	inset:-8px;
+	border-radius:inherit;
+	background: radial-gradient(circle at 20% 20%, rgba(96,165,250,0.12), transparent 25%), radial-gradient(circle at 80% 80%, rgba(14,165,233,0.08), transparent 30%);
+	filter:blur(12px);
+	z-index:-1;
+	pointer-events:none;
 }
+
+@media (prefers-reduced-motion: no-preference){
+	.sponsor[data-tier="Platinum"]::before{
+		content:'';
+		position:absolute;
+		left:-40%;
+		top:0;
+		width:140%;
+		height:100%;
+		background:linear-gradient(120deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.04) 100%);
+		transform:skewX(-18deg);
+		animation:platinum-shine 4s linear infinite;
+		border-radius:inherit;
+		mix-blend-mode:overlay;
+		pointer-events:none;
+	}
+
+	@keyframes platinum-shine{
+		0%{left:-40%}
+		100%{left:140%}
+	}
+}
+
+.sponsor[data-tier="Gold"]{
+	padding:0.35rem 0.8rem;
+	border-radius:1.2rem;
+	background:linear-gradient(90deg,#fff7ed 0%,#ffedd5 100%);
+	color:#341a02;
+	font-weight:800;
+	box-shadow:0 10px 26px rgba(245,158,11,0.12);
+	border:1px solid rgba(245,158,11,0.08);
+}
+
+.sponsor[data-tier="Silver"]{
+	padding:0.28rem 0.7rem;
+	border-radius:1.2rem;
+	background:#f3f4f6;
+	color:var(--color-strong);
+	font-weight:700;
+	border:1px solid rgba(16,24,40,0.04);
+}
+
+.sponsor[data-tier="Bronze"]{
+	padding:0.28rem 0.7rem;
+	border-radius:1.2rem;
+	background:#c07a49;
+	color:var(--color-on-dark);
+	font-weight:700;
+	box-shadow:0 8px 20px rgba(184,115,51,0.08);
+}
+
+/* Fallback for unknown tiers */
+.sponsor[data-tier=""], .sponsor:not([data-tier]){background:transparent}

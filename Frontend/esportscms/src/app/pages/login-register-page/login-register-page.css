@@ -1,9 +1,10 @@
-.auth-card {
-  width: 100%;
-  max-width: 420px;
-  border-radius: 12px;
-}
+.auth-wrap{min-height:80vh;display:flex;align-items:center;justify-content:center;padding:var(--space-lg)}
+.auth-card{width:100%;max-width:460px;border-radius:12px;background:var(--color-surface);padding:var(--space-md);box-shadow:0 12px 30px rgba(16,24,40,0.08)}
+.auth-card h3{text-align:center;margin:0 0 var(--space-md)}
+.form-row{margin-bottom:var(--space-sm)}
+.form-label{display:block;margin-bottom:0.35rem;color:var(--color-strong);font-weight:600}
+.form-control{width:100%;padding:0.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent}
+.auth-actions{display:flex;flex-direction:column;gap:var(--space-sm);margin-top:var(--space-md)}
+.toggle-btn{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:0.5rem;border-radius:8px}
 
-a {
-  cursor: pointer;
-}
+@media (max-width:600px){.auth-wrap{padding:var(--space-md)}.auth-card{padding:var(--space-sm)}}

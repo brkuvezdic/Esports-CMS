@@ -2,12 +2,12 @@
   <div class="marquee">
     <div class="marquee__group">
       @for (sponsor of sponsors; track sponsor.sponsorId) {
-        <span class="sponsor">{{ sponsor.title }}</span>
+        <span class="sponsor" [attr.data-tier]="sponsor.sponsorTier">{{ sponsor.title }}</span>
       }
     </div>
     <div class="marquee__group">
       @for (sponsor of sponsors; track sponsor.sponsorId) {
-        <span class="sponsor">{{ sponsor.title }}</span>
+        <span class="sponsor" [attr.data-tier]="sponsor.sponsorTier">{{ sponsor.title }}</span>
       }
     </div>
   </div>

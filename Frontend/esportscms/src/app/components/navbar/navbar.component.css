@@ -1,78 +1,38 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #1f2937;
-  padding: 0.5rem 1rem;
-  color: white;
+.navbar{
+  display:flex;align-items:center;justify-content:space-between;padding:var(--space-sm) var(--space-md);background:var(--color-surface);box-shadow:0 1px 0 rgba(16,24,40,0.04)}
+
+.navbar .brand{font-weight:700;color:var(--color-strong);text-decoration:none}
+
+.nav-links{display:flex;gap:0.5rem;align-items:center;margin:0;padding:0;list-style:none}
+.nav-links a{color:var(--color-strong);text-decoration:none;padding:0.4rem 0.6rem;border-radius:6px;font-weight:600}
+.nav-links a:hover{background:color-mix(in srgb, var(--color-primary) 8%, transparent)}
+.nav-links a.router-link-active{border-bottom:2px solid var(--color-primary)}
+
+.nav-actions{display:flex;gap:0.5rem;align-items:center}
+
+/* Compact mobile layout: stack links under brand */
+@media (max-width:900px){
+  .nav-links{flex-direction:column;align-items:stretch;background:transparent;width:100%}
+  .navbar{padding:var(--space-sm)}
 }
 
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin: 0 0.5rem;
-  font-weight: 500;
+/* small live dot */
+.live-indicator{color:var(--color-danger);font-weight:700;display:inline-flex;gap:0.35rem;align-items:center}
+.live-indicator::before{content:'';width:0.55rem;height:0.55rem;border-radius:50%;background:var(--color-danger)}
+
+/* Accessible focus states for keyboard users */
+.brand:focus-visible,
+.nav-links a:focus-visible,
+.nav-actions a:focus-visible,
+.nav-actions button:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--color-primary) 36%, transparent);
+  outline-offset:3px;
+  border-radius:6px;
 }
 
-.navbar a.active {
-  border-bottom: 2px solid #3b82f6;
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce){
+  .nav-links a{transition:none}
+  .brand, .nav-links a, .nav-actions a{animation:none}
 }
 
-.navbar-links {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-links li {
-  margin: 0 0.5rem;
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-
-/* Flashing "live" effect */
-.live-indicator {
-  position: relative;
-  color: #f87171; /* light red */
-  font-weight: 600;
-  animation: flash 1.5s infinite;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem; /* space between dot and text */
-}
-
-/* Small live circle */
-.live-indicator::before {
-  content: '';
-  display: inline-block;
-  width: 0.6rem;
-  height: 0.6rem;
-  background-color: #ef4444; /* red */
-  border-radius: 50%; /* makes it circular */
-  animation: pulse 1.5s infinite;
-}
-
-/* Optional: text "LIVE" after link text */
-.live-indicator::after {
-  content: 'LIVE';
-  color: #ef4444;
-  font-weight: bold;
-  font-size: 0.85rem;
-  animation: pulse 1.5s infinite;
-}
-
-/* Flash and pulse animations */
-@keyframes flash {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
-}

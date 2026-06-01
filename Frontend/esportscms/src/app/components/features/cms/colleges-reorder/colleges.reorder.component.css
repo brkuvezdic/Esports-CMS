@@ -1,19 +1,4 @@
-.drag-handle {
-  cursor: grab;
-}
-
-.drag-handle:active {
-  cursor: grabbing;
-}
-
-.cdk-drag-preview {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  border-radius: 0.5rem;
-}
-
-.cdk-drag-placeholder {
-  background-color: #f1f3f5;
-  border: 2px dashed #dee2e6;
-  min-height: 60px;
-  margin-bottom: 0.5rem;
-}
+.drag-handle{cursor:grab}
+.drag-handle:active{cursor:grabbing}
+.cdk-drag-preview{box-shadow:0 12px 30px rgba(16,24,40,0.06);border-radius:0.5rem}
+.cdk-drag-placeholder{background:color-mix(in srgb,var(--color-bg) 80%, var(--color-surface) 20%);border:2px dashed rgba(15,23,42,0.06);min-height:60px;margin-bottom:0.5rem;border-radius:8px}
