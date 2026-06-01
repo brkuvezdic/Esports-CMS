@@ -1,28 +1,42 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SponsorsService } from '../../services/sponsorsService';
+import { SponsorModel } from '../../models/sponsors';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sponsors',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './sponsors.component.html',
   styleUrls: ['./sponsors.component.css']
 })
-export class SponsorsComponent {
+export class SponsorsComponent implements OnInit {
 
-    constructor(private router: Router) {}
+  sponsors: SponsorModel[] = [];
+
+  constructor(
+    private router: Router,
+    private sponsorsService: SponsorsService
+  ) {}
 
   get isHidden(): boolean {
     return this.router.url === '/';
   }
-  sponsors = [
-    { name: 'Red Bull' },
-    { name: 'Intel' },
-    { name: 'Riot Games' },
-    { name: 'Logitech' },
-    { name: 'HyperX' },
-    { name: 'SteelSeries' },
-    { name: 'Corsair' }
-  ];
+
+  ngOnInit(): void {
+    this.loadSponsors();
+  }
+
+  loadSponsors(): void {
+    this.sponsorsService.getSponsors().subscribe({
+      next: (data) => {
+        this.sponsors = data;
+        console.log('Sponsors loaded:', data);
+      },
+      error: (err) => {
+        console.error('Failed to load sponsors', err);
+      }
+    });
+  }
 }

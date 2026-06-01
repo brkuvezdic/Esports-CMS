@@ -83,7 +83,6 @@ public partial class EsportsCmsContext : DbContext
 
         modelBuilder.Entity<Sponsor>(entity =>
         {
-            entity.HasNoKey();
 
             entity.Property(e => e.SponsorId).ValueGeneratedOnAdd();
             entity.Property(e => e.SponsorTier).HasMaxLength(50);

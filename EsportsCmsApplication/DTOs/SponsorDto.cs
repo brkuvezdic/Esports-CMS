@@ -9,8 +9,9 @@ namespace EsportsCmsApplication.DTOs
 {
     public class SponsorDto
     {
+        [Key]
 
-            public int SponsorId { get; set; }
+        public int SponsorId { get; set; }
             public required string Title { get; set; }
             public string Description { get; set; } = string.Empty;
             public string SponsorTier { get; set; } = null!;
@@ -18,6 +19,8 @@ namespace EsportsCmsApplication.DTOs
 
     public class CreateSponsorDto
     {
+        [Key]
+
         public int SponsorId { get; set; }
         [Required]
         [MaxLength(100)]
@@ -29,6 +32,8 @@ namespace EsportsCmsApplication.DTOs
 
     public class UpdateSponsorDto
     {
+        [Key]
+
         public int SponsorId { get; set; }
         public required string Title { get; set; }
         public string Description { get; set; } = string.Empty;
